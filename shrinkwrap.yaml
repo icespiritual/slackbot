@@ -1,5 +1,5 @@
 dependencies:
-  botbuilder-adapter-slack: 1.0.1
+  botbuilder-adapter-slack: 1.0.2
   botbuilder-storage-mongodb: 0.9.5
   botkit: 4.0.1
   botkit-plugin-cms: 1.0.0
@@ -126,7 +126,7 @@ packages:
     dependencies:
       '@types/form-data': 2.2.1
       '@types/is-stream': 1.1.0
-      '@types/node': 11.13.9
+      '@types/node': 12.0.0
       '@types/p-cancelable': 1.0.1
       '@types/p-queue': 2.3.2
       '@types/p-retry': 3.0.1
@@ -170,13 +170,13 @@ packages:
       integrity: sha512-/sO8rlEFYLZGjoDCIy1BmSdo+xNQbtJIgyrElZrzALolPUhBHvY/vQVGKSw4RSkREtuAv3eb6M7mDXvhpFxYbw==
   /@types/form-data/2.2.1:
     dependencies:
-      '@types/node': 11.13.9
+      '@types/node': 12.0.0
     dev: false
     resolution:
       integrity: sha512-JAMFhOaHIciYVh8fb5/83nmuO/AHwmto+Hq7a9y8FzLDcC1KCU344XDOMEmahnrTFlHjgh4L0WJFczNIX2GxnQ==
   /@types/is-stream/1.1.0:
     dependencies:
-      '@types/node': 11.13.9
+      '@types/node': 12.0.0
     dev: false
     resolution:
       integrity: sha512-jkZatu4QVbR60mpIzjINmtS1ZF4a/FqdTUTBeQDVOQ2PYyidtwFKr0B5G6ERukKwliq+7mIXvxyppwzG5EgRYg==
@@ -201,6 +201,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-NJ4yuEVw5podZbINp3tEqUIImMSAEHaCXRiWCf3KC32l6hIKf0iPJEh2uZdT0fELfRYk310yLmMXqy2leZQUbg==
+  /@types/node/12.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-Jrb/x3HT4PTJp6a4avhmJCDEVrPdqLfl3e8GGMbpkGGdwAV5UGlIs4vVEfsHHfylZVOKZWpOqmqFH8CbfOZ6kg==
   /@types/p-cancelable/1.0.1:
     dependencies:
       p-cancelable: 2.0.0
@@ -226,7 +230,7 @@ packages:
   /@types/ws/5.1.2:
     dependencies:
       '@types/events': 3.0.0
-      '@types/node': 11.13.9
+      '@types/node': 12.0.0
     dev: false
     resolution:
       integrity: sha512-NkTXUKTYdXdnPE2aUUbGOXE1XfMK527SCvU/9bj86kyFF6kZ9ZnOQ3mK5jADn98Y2vEUD/7wKDgZa7Qst2wYOg==
@@ -353,7 +357,7 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw==
-  /botbuilder-adapter-slack/1.0.1:
+  /botbuilder-adapter-slack/1.0.2:
     dependencies:
       '@slack/client': 4.12.0
       botbuilder: 4.4.0
@@ -361,7 +365,7 @@ packages:
       debug: 4.1.1
     dev: false
     resolution:
-      integrity: sha512-jv3Y3XMR9EmB7LWUwRqdgInzN6inKgC1f5HNjDA9sLaGp6iEKj7WfMtQr3I5xFiEMGTnnGkF/YMLoNCpymPnpQ==
+      integrity: sha512-o3KwXcj9mo42Z/IJWoXZdTqmQb3hmMYPnUqzTinL6PqGZ5hPXOeXZIi5PpI+sOHWoNfyPES3Y1exKdtaccrHpg==
   /botbuilder-core/4.4.0:
     dependencies:
       assert: 1.4.1
@@ -1781,7 +1785,7 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
-  botbuilder-adapter-slack: ^1.0.1
+  botbuilder-adapter-slack: ^1.0.2
   botbuilder-storage-mongodb: ^0.9.5
   botkit: ^4.0.1
   botkit-plugin-cms: ^1.0.0
