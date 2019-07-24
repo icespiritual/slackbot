@@ -27,6 +27,9 @@ if (process.env.MONGO_URI) {
 
 
 const adapter = new SlackAdapter({
+    // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
+    enable_incomplete: true,
+
     // parameters used to secure webhook endpoint
     verificationToken: process.env.verificationToken,
     clientSigningSecret: process.env.clientSigningSecret,  
@@ -54,7 +57,7 @@ adapter.use(new SlackMessageTypeMiddleware());
 
 
 const controller = new Botkit({
-    debug: true,
+    
     webhook_uri: '/api/messages',
 
     adapter: adapter,
@@ -90,7 +93,11 @@ controller.ready(() => {
 
 });
 
+controller.webserver.get('/', (req, res) => {
 
+    res.send(`This app is running Botkit ${ controller.version }.`);
+
+});
 
 controller.webserver.get('/install', (req, res) => {
     // getInstallLink points to slack's oauth endpoint and includes clientId and scopes
