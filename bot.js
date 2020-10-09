@@ -74,7 +74,7 @@ if (process.env.cms_uri) {
 
 // Once the bot has booted up its internal services, you can use them to do stuff.
 controller.ready(() => {
-
+    console.log('ready');
     // load traditional developer-created local custom feature modules
     controller.loadModules(__dirname + '/features');
 
@@ -100,6 +100,7 @@ controller.webserver.get('/', (req, res) => {
 });
 
 controller.webserver.get('/install', (req, res) => {
+  console.log('install!');
     // getInstallLink points to slack's oauth endpoint and includes clientId and scopes
     res.redirect(controller.adapter.getInstallLink());
 });
