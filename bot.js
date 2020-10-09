@@ -28,7 +28,7 @@ if (process.env.MONGO_URI) {
 
 const adapter = new SlackAdapter({
     // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
-    enable_incomplete: true,
+    //enable_incomplete: true,
 
     // parameters used to secure webhook endpoint
     verificationToken: process.env.verificationToken,
@@ -117,6 +117,7 @@ controller.webserver.get('/install/auth', async (req, res) => {
         userCache[results.team_id] =  results.bot.bot_user_id;
 
         res.json('Success! Bot installed.');
+        console.log('install app');
 
     } catch (err) {
         console.error('OAUTH ERROR:', err);
