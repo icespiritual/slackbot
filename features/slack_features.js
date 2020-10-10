@@ -134,19 +134,17 @@ module.exports = function(controller) {
     controller.hears('testblock', 'message', async(bot, message) => {
       await bot.reply(message,{
               blocks: [
-                  {
-                      "type": "section",
-                      "text": {
-                          "type": "mrkdwn",
-                          "text": "*Farmhouse Thai Cuisine*\n:star::star::star::star: 1528 reviews\n They do have some vegan options, like the roti and curry, plus they have a ton of salad stuff and noodles can be ordered without meat!! They have something for everyone here"
-                      },
-                      "accessory": {
-                          "type": "image",
-                          "image_url": "https://pbs.twimg.com/media/Ej9Z9ZHUYAAxyQE.jpg",
-                          "alt_text": "alt text for image"
-                      }
+                {
+                  "type": "image",
+                  "title": {
+                    "type": "plain_text",
+                    "text": "Please enjoy this photo of a kitten"
                   },
-              ]
+                  "block_id": "image4",
+                  "image_url": "https://pbs.twimg.com/media/Ej9Z9ZHUYAAxyQE.jpg",
+                  "alt_text": "An incredibly cute kitten."
+                },
+              ]        
         });
     });
     controller.on('block_actions', async (bot, message) => {
