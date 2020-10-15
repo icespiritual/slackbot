@@ -111,6 +111,7 @@ controller.webserver.get('/install/auth', async (req, res) => {
 
         console.log('FULL OAUTH DETAILS', results);
 
+        let team = results.team_id;
         // Store token by team in bot state.
         tokenCache[results.team_id] = results.bot.bot_access_token;
 
@@ -161,3 +162,9 @@ async function getBotUserByTeam(teamId) {
         console.error('Team not found in userCache: ', teamId);
     }
 }
+
+//function intervalFunc() {
+  //console.log('Cant stop me now!');
+//}
+
+//setInterval(intervalFunc, 1500);
