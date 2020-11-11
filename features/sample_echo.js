@@ -5,9 +5,9 @@
 
 module.exports = function(controller) {
 
-    controller.hears('sample','message', async(bot, message) => {
-        await bot.reply(message, 'I heard a sample message.');
-    });
+    //controller.hears('宋江','message', async(bot, message) => {
+      //  await bot.reply(message, '志杰.');
+    //});
 
     controller.on('message', async(bot, message) => {
         //await bot.reply(message, `Echo: ${ message.text }`);
