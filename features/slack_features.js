@@ -135,16 +135,11 @@ module.exports = function(controller) {
       await bot.reply(message,{
               blocks: [
                 {
-                  "type": "image",
-                  "title": {
-                    "type": "plain_text",
-                    "text": "Please enjoy this photo of a kitten"
-                  },
-                  "block_id": "image4",
+                  "type": "image",                 
                   "image_url": "https://pbs.twimg.com/media/Ej9Z9ZHUYAAxyQE.jpg",
                   "alt_text": "An incredibly cute kitten."
                 },
-              ]        
+              ]
         });
     });
     controller.on('block_actions', async (bot, message) => {

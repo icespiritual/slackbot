@@ -12,8 +12,8 @@ module.exports = function(controller) {
 
       const client = new imageSearch(id, key);
       const options = {page:1};
-      var result = await client.search('1234');
-      console.log(result, options)
+      var result = await client.search('1234', options);
+      console.log(result[0].url)
     });
 
     controller.on('message', async(bot, message) => {
