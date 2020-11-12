@@ -7,6 +7,7 @@ module.exports = function(controller) {
 
     controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
       if (message.text.search('抽') === 0){
+        console.log('有抽字');
         var key = "AIzaSyCXOj-eYdjWCYP4i1FBoEHZj3gNAJovCDY";                // API KEY
         var id = "7c84da9a39b231c0d"; // CSE ID
         const imageSearch = require('image-search-google');
