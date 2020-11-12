@@ -21,16 +21,21 @@ module.exports = function(controller) {
           console.log('search image error');
         }
         if (result.length > 0){
-          console.log(result[0].url)
-          await bot.reply(message,{
-                  blocks: [
-                    {
-                      "type": "image",                 
-                      "image_url": result[0].url,
-                      "alt_text": "An incredibly cute kitten."
-                    },
-                  ]
-          });
+          for (var i=0; i<result.length; ++i) {
+            if (result[i].url.search('.png') > 0 || result[i].url.search('.jpg') > 0){
+              console.log(result[i].url)
+              await bot.reply(message,{
+                      blocks: [
+                        {
+                          "type": "image",                 
+                          "image_url": result[i].url,
+                          "alt_text": "An incredibly cute kitten."
+                        },
+                      ]
+              });
+              break;
+            }
+          }
         }else{
           await bot.reply(message, `找不到QQ`);
         }
