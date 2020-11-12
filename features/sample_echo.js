@@ -5,24 +5,26 @@
 
 module.exports = function(controller) {
 
-    controller.hears('宋江','message', async(bot, message) => {
-      var key = "AIzaSyCXOj-eYdjWCYP4i1FBoEHZj3gNAJovCDY";                // API KEY
-      var id = "7c84da9a39b231c0d"; // CSE ID
-      const imageSearch = require('image-search-google');
+    controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
+      if (message.text.search('抽') === 0){
+        var key = "AIzaSyCXOj-eYdjWCYP4i1FBoEHZj3gNAJovCDY";                // API KEY
+        var id = "7c84da9a39b231c0d"; // CSE ID
+        const imageSearch = require('image-search-google');
 
-      const client = new imageSearch(id, key);
-      const options = {page:1};
-      var result = await client.search('1234', options);
-      console.log(result[0].url)
-      await bot.reply(message,{
-              blocks: [
-                {
-                  "type": "image",                 
-                  "image_url": result[0].url,
-                  "alt_text": "An incredibly cute kitten."
-                },
-              ]
+        const client = new imageSearch(id, key);
+        const options = {page:1};
+        var result = await client.search(message.text.slice(1), options);
+        console.log(result[0].url)
+        await bot.reply(message,{
+                blocks: [
+                  {
+                    "type": "image",                 
+                    "image_url": result[0].url,
+                    "alt_text": "An incredibly cute kitten."
+                  },
+                ]
         });
+      }
     });
 
     controller.on('message', async(bot, message) => {
