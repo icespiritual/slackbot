@@ -30,7 +30,7 @@ module.exports = function(controller) {
                         {
                           "type": "image",                 
                           "image_url": result[i].url,
-                          "alt_text": "An incredibly cute kitten."
+                          "alt_text": message.text
                         },
                       ]
               });
