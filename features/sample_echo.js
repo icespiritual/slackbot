@@ -42,7 +42,7 @@ module.exports = function(controller) {
           }
         }else{
           if (too_many_request == 1)
-            await bot.reply(message, `滿了, 明天ㄑㄧㄥ`);
+            await bot.reply(message, `滿了, 明天請早`);
           else
             await bot.reply(message, `找不到QQ`);
         }
