@@ -14,18 +14,20 @@ module.exports = function(controller) {
         const client = new imageSearch(id, key);
         const options = {page:1};
         var result= [];
+        var too_many_request = 0;
         try{
           result = await client.search(message.text.slice(1), options);
         }
-        catch{
-          console.log('search image error');
+        catch(e){
+          console.log('search image error' + e);
+          too_many_request = 1;
         }
         if (result.length > 0){
           var start_value = Math.floor(Math.random() * 5);
           for (var i=start_value; i<result.length; ++i) {
-            if (result[i].url.search('.png') > 0 || result[i].url.search('.jpg') > 0){
+            if (result[i].url.search('.png') > 0 || result[i].url.search('.jpg') > 0 || result[i].url.search('.gif') > 0){
               console.log(result[i].url)
-              await bot.reply(message,{
+              /*await bot.reply(message,{
                       blocks: [
                         {
                           "type": "image",                 
@@ -33,12 +35,16 @@ module.exports = function(controller) {
                           "alt_text": message.text
                         },
                       ]
-              });
+              });*/
+              await bot.reply(message.text, +'\n' + result[i].url);
               break;
             }
           }
         }else{
-          await bot.reply(message, `找不到QQ`);
+          if (too_many_request == 1)
+            await bot.reply(message, `滿了, 明天ㄑㄧㄥ`);
+          else
+            await bot.reply(message, `找不到QQ`);
         }
       }
     });
