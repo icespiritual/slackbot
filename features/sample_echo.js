@@ -21,7 +21,8 @@ module.exports = function(controller) {
           console.log('search image error');
         }
         if (result.length > 0){
-          for (var i=0; i<result.length; ++i) {
+          var start_value = Math.floor(Math.random() * 10);
+          for (var i=start_value; i<result.length; ++i) {
             if (result[i].url.search('.png') > 0 || result[i].url.search('.jpg') > 0){
               console.log(result[i].url)
               await bot.reply(message,{
