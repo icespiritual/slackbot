@@ -13,17 +13,27 @@ module.exports = function(controller) {
 
         const client = new imageSearch(id, key);
         const options = {page:1};
-        var result = await client.search(message.text.slice(1), options);
-        console.log(result[0].url)
-        await bot.reply(message,{
-                blocks: [
-                  {
-                    "type": "image",                 
-                    "image_url": result[0].url,
-                    "alt_text": "An incredibly cute kitten."
-                  },
-                ]
-        });
+        var result= [];
+        try{
+          result = await client.search(message.text.slice(1), options);
+        }
+        catch{
+          console.log('search image error');
+        }
+        if (result.length > 0){
+          console.log(result[0].url)
+          await bot.reply(message,{
+                  blocks: [
+                    {
+                      "type": "image",                 
+                      "image_url": result[0].url,
+                      "alt_text": "An incredibly cute kitten."
+                    },
+                  ]
+          });
+        }else{
+          await bot.reply(message, `找不到QQ`);
+        }
       }
     });
 
