@@ -21,7 +21,7 @@ module.exports = function(controller) {
           console.log('search image error');
         }
         if (result.length > 0){
-          var start_value = Math.floor(Math.random() * 10);
+          var start_value = Math.floor(Math.random() * 5);
           for (var i=start_value; i<result.length; ++i) {
             if (result[i].url.search('.png') > 0 || result[i].url.search('.jpg') > 0){
               console.log(result[i].url)
