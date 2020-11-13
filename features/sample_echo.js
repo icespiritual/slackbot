@@ -7,7 +7,7 @@ module.exports = function(controller) {
 
     controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
       if (message.text.search('抽') === 0){
-        //console.log('有抽字');
+        console.log('抽!');
         var key = "AIzaSyCXOj-eYdjWCYP4i1FBoEHZj3gNAJovCDY";                // API KEY
         var id = "7c84da9a39b231c0d"; // CSE ID
         const imageSearch = require('image-search-google');
@@ -24,6 +24,7 @@ module.exports = function(controller) {
           too_many_request = 1;
         }
         if (result.length > 0){
+          console.log(result);
           var start_value = Math.floor(Math.random() * 5);
           for (var i=start_value; i<result.length; ++i) {
             if (result[i].url.search('.png') > 0 || result[i].url.search('.jpg') > 0 || result[i].url.search('.gif') > 0){
