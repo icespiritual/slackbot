@@ -50,22 +50,22 @@ module.exports = function(controller) {
         }
         var i = find_image(bot, message, result);
         if (i > 0){
-          bot.reply(message, message.text + '\n' + result[i].url);
+          await bot.reply(message, message.text + '\n' + result[i].url);
         }
         else{
           if (too_many_request == 1){
-            bot.reply(message, `滿了, 明天請早`);
+            await bot.reply(message, `滿了, 明天請早`);
           }
           else{
             // try second page
-            const options = {start:11};
-            result = client.search(message.text.slice(1), options);
+            const options = {page:11};
+            result = await client.search(message.text.slice(1), options);
             i = find_image(bot, message, result);
             if (i >= 0){
-              bot.reply(message, message.text + '\n' + result[i].url);
+              await bot.reply(message, message.text + '\n' + result[i].url);
             }
             else{
-                bot.reply(message, `找不到QQ`);
+                await bot.reply(message, `找不到QQ`);
             }
           }
         }
