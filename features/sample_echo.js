@@ -3,40 +3,29 @@
  * Licensed under the MIT License.
  */
 
-function find_image(bot, message, options, result){
-  if (result.length > 0){
-    console.log(result);
-    var start_value = Math.floor(Math.random() * 5);
-    for (var j=0;j<result.length; j++ ) {
-      var i = (j + start_value)%result.length;
-      if (result[i].url.search('fbsbx') > 0)
-        continue;
-      if (result[i].url.search('.png') > 0 || result[i].url.search('.jpg') > 0 || result[i].url.search('.gif') > 0){
-        console.log(message.text);
-        console.log(result[i].url);
-        /*await bot.reply(message,{
-                blocks: [
-                  {
-                    "type": "image",                 
-                    "image_url": result[i].url,
-                    "alt_text": message.text
-                  },
-                ]
-        });*/
-        bot.reply(message, message.text + '\n' + result[i].url);
-        break;
-      }
+function find_image(bot, message, result){
+  console.log(result);
+  var start_value = Math.floor(Math.random() * 5);
+  for (var j=0;j<result.length; j++ ) {
+    var i = (j + start_value)%result.length;
+    if (result[i].url.search('fbsbx') > 0)
+      continue;
+    if (result[i].url.search('.png') > 0 || result[i].url.search('.jpg') > 0 || result[i].url.search('.gif') > 0){
+      console.log(message.text);
+      console.log(result[i].url);
+      /*await bot.reply(message,{
+              blocks: [
+                {
+                  "type": "image",                 
+                  "image_url": result[i].url,
+                  "alt_text": message.text
+                },
+              ]
+      });*/
+      return i;
     }
-    // try second page
-    options = {start:11};
-    result = client.search(message.text.slice(1), options);
-
-  }else{
-    if (too_many_request == 1)
-      bot.reply(message, `滿了, 明天請早`);
-    else
-      bot.reply(message, `找不到QQ`);
   }
+  return -1;
 }
 
 module.exports = function(controller) {
@@ -59,7 +48,27 @@ module.exports = function(controller) {
           console.log('search image error' + e);
           too_many_request = 1;
         }
-        find_image(bot, result);
+        var i = find_image(bot, message, result);
+        if (i > 0){
+          bot.reply(message, message.text + '\n' + result[i].url);
+        }
+        else{
+          if (too_many_request == 1){
+            bot.reply(message, `滿了, 明天請早`);
+          }
+          else{
+            // try second page
+            const options = {start:11};
+            result = client.search(message.text.slice(1), options);
+            i = find_image(bot, message, result);
+            if (i >= 0){
+              bot.reply(message, message.text + '\n' + result[i].url);
+            }
+            else{
+                bot.reply(message, `找不到QQ`);
+            }
+          }
+        }
       }
     });
 
