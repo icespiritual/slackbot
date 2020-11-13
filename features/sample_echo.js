@@ -58,6 +58,7 @@ module.exports = function(controller) {
           }
           else{
             // try second page
+            console.log('second page');
             const options = {page:11};
             result = await client.search(message.text.slice(1), options);
             i = find_image(bot, message, result);
