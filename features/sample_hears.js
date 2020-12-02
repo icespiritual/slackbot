@@ -8,9 +8,19 @@ module.exports = function(controller) {
     controller.hears(async(message) => message.text && message.text.toLowerCase() === 'foo', ['message'], async (bot, message) => {
         await bot.reply(message, 'I heard "foo" via a function test');
         console.log(controller.webserver.team);
-      //var d = new Date();
-      //var t = d.getTime();
-      //console.log(t);
+      var minutes = 1000 * 60;
+      var hours = minutes * 60;
+      var days = hours * 24;
+      var years = days * 365;
+      var d = new Date();
+      var t = d.getTime();
+
+      var x = Math.round(t / minutes);
+      x = x % 60;
+      var y = Math.round(t / hours);
+      y = y % 24;
+      console.log(x);
+      console.log(y);
     });
 
     // use a regular expression to match the text of the message
