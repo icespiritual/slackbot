@@ -62,7 +62,8 @@ const controller = new Botkit({
 
     adapter: adapter,
 
-    storage
+    //storage
+  json_file_store: 'path_to_json_database'
 });
 
 if (process.env.cms_uri) {
