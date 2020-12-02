@@ -6,7 +6,7 @@ module.exports = function(controller) {
 
     // use a function to match a condition in the message
     controller.hears(async(message) => message.text && message.text.toLowerCase() === 'foo', ['message'], async (bot, message) => {
-        await bot.reply(message, 'I heard "foo" via a function test');
+        await bot.reply(message, 'I heard "foo" via a function test'  + '(' + 33 + '/100)\n');
         console.log(controller.webserver.team);
       var minutes = 1000 * 60;
       var hours = minutes * 60;

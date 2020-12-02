@@ -4,6 +4,10 @@
  */
 var last_query_time = 0;
 var last_keyword = ' ';
+var minutes = 1000 * 60;
+var hours = minutes * 60;
+var days = hours * 24;
+var query_count = 0;
 //var d = new Date();
 //var t = d.getTime();
 function find_image(bot, message, result){
@@ -46,6 +50,15 @@ module.exports = function(controller) {
           console.log('too near same query!');
           return;
         }
+        var last_hour = Math.round(last_query_time / hours);
+        last_hour = last_hour % 24;
+        var last_day = Math.round(last_query_time / days);
+        var cur_hour = Math.round(cur_time / hours);
+        cur_hour = cur_hour % 24;
+        var cur_day = Math.round(cur_time / days);
+        // reset query count after 4:00PM
+        if ((cur_day > last_day) || (cur_day == last_day && cur_hour >= 9 && last_hour < 9))
+          query_count = 0;
         last_keyword = keyword;
         last_query_time = cur_time;
         
@@ -62,11 +75,12 @@ module.exports = function(controller) {
         }
         var i = find_image(bot, message, result);
         if (i > 0){
-          await bot.reply(message, message.text + '\n' + result[i].url);
+          query_count++;
+          await bot.reply(message, message.text + '(' + query_count + '/100)\n' + result[i].url);
         }
         else{
           if (too_many_request == 1){
-            await bot.reply(message, `滿了, 明天請早`);
+            await bot.reply(message, `滿了, 明天請早(` + query_count + '/100)');
           }
           else{
             // try second page
@@ -75,7 +89,8 @@ module.exports = function(controller) {
             result = await client.search(message.text.slice(1), options);
             i = find_image(bot, message, result);
             if (i >= 0){
-              await bot.reply(message, message.text + '\n' + result[i].url);
+              query_count+= 2;
+              await bot.reply(message, message.text + '(' + query_count + '/100)\n' + result[i].url);
             }
             else{
                 await bot.reply(message, `找不到QQ`);
