@@ -47,7 +47,7 @@ module.exports = function(controller) {
           return;
         }
         last_keyword = keyword;
-        last_query_tiem = cur_time;
+        last_query_time = cur_time;
         
         const client = new imageSearch(id, key);
         const options = {page:1};
