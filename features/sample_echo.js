@@ -50,12 +50,12 @@ module.exports = function(controller) {
           console.log('too near same query!');
           return;
         }
-        var last_hour = last_query_time / hours;
+        var last_hour = Math.floor(last_query_time / hours);
         last_hour = last_hour % 24;
-        var last_day = last_query_time / days;
-        var cur_hour = cur_time / hours;
+        var last_day = Math.floor(last_query_time / days);
+        var cur_hour = Math.floor(cur_time / hours);
         cur_hour = cur_hour % 24;
-        var cur_day = cur_time / days;
+        var cur_day = Math.floor(cur_time / days);
         console.log("last day:" + last_day + " hour:" + last_hour);
         console.log("cur day:" + cur_day + " hour:" + cur_hour);
         // reset query count after 4:00PM
