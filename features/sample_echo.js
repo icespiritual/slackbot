@@ -2,7 +2,10 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Licensed under the MIT License.
  */
-
+var last_query_time = 0;
+var last_keyword = ' ';
+//var d = new Date();
+//var t = d.getTime();
 function find_image(bot, message, result){
   console.log(result);
   var start_value = Math.floor(Math.random() * 5);
@@ -36,13 +39,22 @@ module.exports = function(controller) {
         var key = "AIzaSyCXOj-eYdjWCYP4i1FBoEHZj3gNAJovCDY";                // API KEY
         var id = "7c84da9a39b231c0d"; // CSE ID
         const imageSearch = require('image-search-google');
-
+        var d = new Date();
+        var cur_time = d.getTime();
+        var keyword = message.text.slice(1);
+        if (cur_time - last_query_time < 10000 && last_keyword == keyword){
+          console.log('too near same query!');
+          return;
+        }
+        last_keyword = keyword;
+        last_query_tiem = cur_time;
+        
         const client = new imageSearch(id, key);
         const options = {page:1};
         var result= [];
         var too_many_request = 0;
         try{
-          result = await client.search(message.text.slice(1), options);
+          result = await client.search(keyword, options);
         }
         catch(e){
           console.log('search image error' + e);
