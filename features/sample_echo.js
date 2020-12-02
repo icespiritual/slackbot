@@ -56,6 +56,8 @@ module.exports = function(controller) {
         var cur_hour = cur_time / hours;
         cur_hour = cur_hour % 24;
         var cur_day = cur_time / days;
+        console.log("last day:" + last_day + " hour:" + last_hour);
+        console.log("cur day:" + cur_day + " hour:" + cur_hour);
         // reset query count after 4:00PM
         if ((cur_day > last_day) || (cur_day == last_day && cur_hour >= 9 && last_hour < 9))
           query_count = 0;
