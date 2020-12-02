@@ -21,8 +21,8 @@ module.exports = function(controller) {
       y = y % 24;
       console.log(x);
       console.log(y);
-      //controller.storage.teams.save({id: message.team, foo:'bar'}, function(err) {  });
-      //controller.storage.teams.get(message.team, function(err, foo) {console.log(foo);});
+      controller.storage.teams.save({id: message.team, foo:'bar'}, function(err) {  });
+      controller.storage.teams.get(message.team, function(err, foo) {console.log(foo);});
     });
 
     // use a regular expression to match the text of the message
