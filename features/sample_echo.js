@@ -59,7 +59,8 @@ module.exports = function(controller) {
         console.log("last day:" + last_day + " hour:" + last_hour);
         console.log("cur day:" + cur_day + " hour:" + cur_hour);
         // reset query count after 4:00PM
-        if ((cur_day > last_day) || (cur_day == last_day && cur_hour >= 9 && last_hour < 9))
+        
+        if ((cur_day > last_day) || (cur_day >= last_day && cur_hour >= 9 && last_hour < 9))
           query_count = 0;
         last_keyword = keyword;
         last_query_time = cur_time;
