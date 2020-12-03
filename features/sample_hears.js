@@ -22,10 +22,9 @@ module.exports = function(controller) {
       console.log(x);
       console.log(y);
       //var beans = {id: 'cool', beans: 'garbanzo'};
-      //controller.storage.teams.save(beans);
-      //controller.storage.teams.get('cool', function(error, beans){
-        //console.log(beans);
-      //});
+      //controller.storage.write(beans);
+      //var newbeans = controller.storage.read('cool');
+      //console.log(newbeans);
       //controller.storage.teams.save({id: message.team, foo:'bar'}, function(err) {  });
       //controller.storage.teams.get(message.team, function(err, foo) {console.log(foo);});
     });
