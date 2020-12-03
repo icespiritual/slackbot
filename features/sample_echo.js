@@ -87,9 +87,9 @@ module.exports = function(controller) {
           if (too_many_request == 1){
             fail_count++;
             if (fail_count % 10 == 0)
-              await bot.reply(message, `滿啦, 再玩要壞掉了');
+              await bot.reply(message, '滿啦, 再玩要壞掉了');
             else
-              await bot.reply(message, `滿了, 明天請早(` + query_count + '/100)');
+              await bot.reply(message, '滿了, 明天請早(' + query_count + '/100)');
           }
           else{
             // try second page
