@@ -8,6 +8,7 @@ var minutes = 1000 * 60;
 var hours = minutes * 60;
 var days = hours * 24;
 var query_count = 0;
+var fail_count = 0;
 //var d = new Date();
 //var t = d.getTime();
 function find_image(bot, message, result){
@@ -80,10 +81,15 @@ module.exports = function(controller) {
         if (i > 0){
           query_count++;
           await bot.reply(message, message.text + '(' + query_count + '/100)\n' + result[i].url);
+          fail_count = 0;
         }
         else{
           if (too_many_request == 1){
-            await bot.reply(message, `滿了, 明天請早(` + query_count + '/100)');
+            fail_count++;
+            if (fail_count % 10 == 0)
+              await bot.reply(message, `滿啦, 再玩要壞掉了');
+            else
+              await bot.reply(message, `滿了, 明天請早(` + query_count + '/100)');
           }
           else{
             // try second page
@@ -94,6 +100,7 @@ module.exports = function(controller) {
             if (i >= 0){
               query_count+= 2;
               await bot.reply(message, message.text + '(' + query_count + '/100)\n' + result[i].url);
+              fail_count = 0;
             }
             else{
                 await bot.reply(message, `找不到QQ`);
