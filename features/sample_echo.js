@@ -51,6 +51,10 @@ module.exports = function(controller) {
           console.log('too near same query!');
           return;
         }
+        if (keyword == 'momobot'){
+          await bot.reply(message, `查我幹嘛`);
+          return;
+        }
         var last_hour = Math.floor(last_query_time / hours);
         last_hour = last_hour % 24;
         var last_day = Math.floor(last_query_time / days);
@@ -86,7 +90,9 @@ module.exports = function(controller) {
         else{
           if (too_many_request == 1){
             fail_count++;
-            if (fail_count % 10 == 0)
+            if (fail_count % 3 == 0)
+              await bot.reply(message, '阿就說滿了齁');
+            else if (fail_count % 10 == 0)
               await bot.reply(message, '滿啦, 再玩要壞掉了');
             else
               await bot.reply(message, '滿了, 明天請早(' + query_count + '/100)');
