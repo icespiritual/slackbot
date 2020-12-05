@@ -8,6 +8,7 @@ dependencies:
   google-it: 1.5.4
   got: 11.8.0
   image-search-google: 1.3.0
+  mongodb: 3.6.3
 packages:
   /@azure/ms-rest-js/1.2.6:
     dependencies:
@@ -423,6 +424,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-S4XzBk5sMB+Rcb/LNcpzXr57VRTxgAvaAEDAl1AwRx27j00hT84O6OkteE7u8UB3NuaaygCRrEpqox4uDOrbdQ==
+  /bl/2.2.1:
+    dependencies:
+      readable-stream: 2.3.7
+      safe-buffer: 5.2.1
+    dev: false
+    resolution:
+      integrity: sha512-6Pesp1w0DEX1N550i/uGV/TqucVL4AM/pgThFSN/Qq9si1/DF9aIHs1BxD8V/QU0HoeHO6cQRTAuYnLPKq1e4g==
   /body-parser/1.19.0:
     dependencies:
       bytes: 3.1.0
@@ -575,6 +583,12 @@ packages:
       node: '>=0.6.19'
     resolution:
       integrity: sha512-jCGVYLoYMHDkOsbwJZBCqwMHyH4c+wzgI9hG7Z6SZJRXWr+x58pdIbm2i9a/jFGCkRJqRUr8eoI7lDWa0hTkxg==
+  /bson/1.1.5:
+    dev: false
+    engines:
+      node: '>=0.6.19'
+    resolution:
+      integrity: sha512-kDuEzldR21lHciPQAIulLs1LZlCXdLziXI6Mb/TDkwXhb//UORJNPXgcRs2CuO4H0DcMkpfT3/ySsP3unoZjBg==
   /buffer-equal-constant-time/1.0.1:
     dev: false
     resolution:
@@ -900,6 +914,12 @@ packages:
       node: '>=0.4.0'
     resolution:
       integrity: sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
+  /denque/1.4.1:
+    dev: false
+    engines:
+      node: '>=0.10'
+    resolution:
+      integrity: sha512-OfzPuSZKGcgr96rf1oODnfjqBFmr1DVoc/TrItj3Ohe0Ah1C5WX5Baquw/9U9KovnQ88EqmJbD66rKYUQYN1tQ==
   /depd/1.1.2:
     dev: false
     engines:
@@ -1578,6 +1598,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-ihis/Kmo9Bd+Cav8YDiTmwXR7t8=
+  /isarray/1.0.0:
+    dev: false
+    resolution:
+      integrity: sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
   /isstream/0.1.2:
     dev: false
     resolution:
@@ -1858,6 +1882,20 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-jw8UyPsq4QleZ9z+t/pIVy3L++51vKdaJ2Q/XXeYxk/3cnKioAH8H6f5tkkDivrQL4PUgUOHe9uZzkpRFH1XtQ==
+  /mongodb/3.6.3:
+    dependencies:
+      bl: 2.2.1
+      bson: 1.1.5
+      denque: 1.4.1
+      require_optional: 1.0.1
+      safe-buffer: 5.2.1
+    dev: false
+    engines:
+      node: '>=4'
+    optionalDependencies:
+      saslprep: 1.0.3
+    resolution:
+      integrity: sha512-rOZuR0QkodZiM+UbQE5kDsJykBqWi0CL4Ec2i1nrGrUI3KO11r6Fbxskqmq3JK2NH7aW4dcccBuUujAP0ERl5w==
   /ms/2.0.0:
     dev: false
     resolution:
@@ -2090,6 +2128,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
+  /process-nextick-args/2.0.1:
+    dev: false
+    resolution:
+      integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
   /process/0.11.10:
     dev: false
     engines:
@@ -2186,6 +2228,18 @@ packages:
     dev: false
     resolution:
       integrity: sha1-fPTFTvZI44EwhMY23SB54WbAgdk=
+  /readable-stream/2.3.7:
+    dependencies:
+      core-util-is: 1.0.2
+      inherits: 2.0.4
+      isarray: 1.0.0
+      process-nextick-args: 2.0.1
+      safe-buffer: 5.1.2
+      string_decoder: 1.1.1
+      util-deprecate: 1.0.2
+    dev: false
+    resolution:
+      integrity: sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw==
   /readable-stream/3.6.0:
     dependencies:
       inherits: 2.0.4
@@ -2254,7 +2308,7 @@ packages:
   /require_optional/1.0.1:
     dependencies:
       resolve-from: 2.0.0
-      semver: 5.7.0
+      semver: 5.7.1
     dev: false
     resolution:
       integrity: sha512-qhM/y57enGWHAe3v/NcwML6a3/vfESLe/sGM2dII+gEO0BpKRUkWZow/tyloNqJyN6kXSl3RyyM8Ll5D/sJP8g==
@@ -2327,6 +2381,11 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-Ya52jSX2u7QKghxeoFGpLwCtGlt7j0oY9DYb5apt9nPlJ42ID+ulTXESnt/qAQcoSERyZ5sl3LDIOw0nAn/5DA==
+  /semver/5.7.1:
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
   /send/0.17.1:
     dependencies:
       debug: 2.6.9
@@ -2406,6 +2465,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-YuIDvEF2bGwoyfyEMB2rHFMQ+pQ=
+  /string_decoder/1.1.1:
+    dependencies:
+      safe-buffer: 5.1.2
+    dev: false
+    resolution:
+      integrity: sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==
   /string_decoder/1.3.0:
     dependencies:
       safe-buffer: 5.2.1
@@ -2686,3 +2751,4 @@ specifiers:
   google-it: ^1.5.4
   got: ^11.7.0
   image-search-google: ^1.3.0
+  mongodb: ^3.6.2
