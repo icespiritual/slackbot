@@ -45,7 +45,12 @@ module.exports = function(controller) {
         var key = "AIzaSyCXOj-eYdjWCYP4i1FBoEHZj3gNAJovCDY";                // API KEY
         var id = "7c84da9a39b231c0d"; // CSE ID
         const imageSearch = require('image-search-google');
-        // loa
+        // load last query time and query count
+        /*
+        var items = await controller.storage.read(['lastquerytime']);
+        const lq_time = items['lastquerytime'] || {};
+        if ('lastquerytime' in lq_time)
+          last_query_time = Number(lq_time.lastquerytime);*/
         var d = new Date();
         var cur_time = d.getTime();
         var keyword = message.text.slice(1);
@@ -71,6 +76,10 @@ module.exports = function(controller) {
           query_count = 0;
         last_keyword = keyword;
         last_query_time = cur_time;
+        // write to db
+        var __last_query_time = {last_query_time: '0'};
+        __last_query_time.last_query_time = last_query_time.toString(10);
+        await controller.storage.write({ 'lastquerytime': __last_query_time });
         
         const client = new imageSearch(id, key);
         const options = {page:1};
@@ -115,6 +124,9 @@ module.exports = function(controller) {
             }
           }
         }
+        var __last_query_count = {last_query_time: '0'};
+        __last_query_time.last_query_time = last_query_time.toString(10);
+        await controller.storage.write({ 'lastquerytime': __last_query_time });
       }
     });
 
