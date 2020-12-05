@@ -21,6 +21,10 @@ module.exports = function(controller) {
       y = y % 24;
       console.log(x);
       console.log(y);
+      var state = 'someTopic';
+      controller.storage.write({ 'botState': state });
+      var items = controller.storage.read('botState');
+      console.log(items);
       //var beans = {id: 'cool', beans: 'garbanzo'};
       //controller.storage.write(beans);
       //var newbeans = controller.storage.read('cool');
