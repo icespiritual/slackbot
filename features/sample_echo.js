@@ -46,11 +46,22 @@ module.exports = function(controller) {
         var id = "7c84da9a39b231c0d"; // CSE ID
         const imageSearch = require('image-search-google');
         // load last query time and query count
-        /*
-        var items = await controller.storage.read(['lastquerytime']);
-        const lq_time = items['lastquerytime'] || {};
-        if ('lastquerytime' in lq_time)
-          last_query_time = Number(lq_time.lastquerytime);*/
+        
+        if (last_query_time == 0){
+          var items = await controller.storage.read(['lastquerytime']);
+          const lq_time = items['lastquerytime'] || {};
+          if ('lastquerytime' in lq_time)
+            last_query_time = Number(lq_time.lastquerytime);
+          console.log("load last query time:" + last_query_time);
+          items = await controller.storage.read(['querycount']);
+          const q_count = items['querycount'] || {};
+          if ('query_count' in q_count)
+            query_count = Number(q_count.query_count);
+          console.log("load query count:" + query_count);
+        }
+        else{
+          console.log('lqst_query_time have loaded');
+        }
         var d = new Date();
         var cur_time = d.getTime();
         var keyword = message.text.slice(1);
@@ -124,9 +135,9 @@ module.exports = function(controller) {
             }
           }
         }
-        var __last_query_count = {last_query_time: '0'};
-        __last_query_time.last_query_time = last_query_time.toString(10);
-        await controller.storage.write({ 'lastquerytime': __last_query_time });
+        var __query_count = {query_count: '0'};
+        __query_count.query_count = query_count.toString(10);
+        await controller.storage.write({ 'querycount': __query_count });
       }
     });
 
