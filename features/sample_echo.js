@@ -50,14 +50,20 @@ module.exports = function(controller) {
         if (last_query_time == 0){
           var items = await controller.storage.read(['lastquerytime']);
           const lq_time = items['lastquerytime'] || {};
-          if ('lastquerytime' in lq_time)
+          if ('lastquerytime' in lq_time){
             last_query_time = Number(lq_time.lastquerytime);
-          console.log("load last query time:" + last_query_time);
+            console.log("load last query time:" + last_query_time);
+          }
+          else{
+            console.log("load last query time fail!");
+          }
           items = await controller.storage.read(['querycount']);
           const q_count = items['querycount'] || {};
-          if ('query_count' in q_count)
+          if ('query_count' in q_count){
             query_count = Number(q_count.query_count);
-          console.log("load query count:" + query_count);
+            console.log("load query count:" + query_count);
+          }
+          else{console.log("load query count fail!");}
         }
         else{
           console.log('lqst_query_time have loaded');

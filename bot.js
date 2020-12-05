@@ -12,7 +12,7 @@ const { BotkitCMSHelper } = require('botkit-plugin-cms');
 
 const { SlackAdapter, SlackMessageTypeMiddleware, SlackEventMiddleware } = require('botbuilder-adapter-slack');
 //import { MongoClient } from 'mongodb';
-const { MongoClient } = require('mongodb');
+//const { MongoClient } = require('mongodb');
 const { MongoDbStorage } = require('botbuilder-storage-mongodb');
 
 // Load process.env values from .env file
