@@ -21,11 +21,10 @@ module.exports = function(controller) {
       y = y % 24;
       console.log(x);
       console.log(y);
-      var kkk = new StoreItem();
-      var kkk.eTag = 'someTopic';
+      var kkk = {love:'kkk'};
       controller.storage.write({ 'superkkk': kkk });
-      //var items = controller.storage.read('botState');
-      //console.log(items);
+      var items = controller.storage.read('superkkk');
+      console.log(items);
       //var beans = {id: 'cool', beans: 'garbanzo'};
       //controller.storage.write(beans);
       //var newbeans = controller.storage.read('cool');
