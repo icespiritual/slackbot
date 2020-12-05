@@ -50,8 +50,8 @@ module.exports = function(controller) {
         if (last_query_time == 0){
           var items = await controller.storage.read(['lastquerytime']);
           const lq_time = items['lastquerytime'] || {};
-          if ('lastquerytime' in lq_time){
-            last_query_time = Number(lq_time.lastquerytime);
+          if ('last_query_time' in lq_time){
+            last_query_time = Number(lq_time.last_query_time);
             console.log("load last query time:" + last_query_time);
           }
           else{
