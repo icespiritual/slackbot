@@ -21,11 +21,14 @@ module.exports = function(controller) {
       y = y % 24;
       console.log(x);
       console.log(y);
-      var kkk = {love:'kkk'};
+      /*var kkk = {love:'kkk'};
       await controller.storage.write({ 'superkkk': kkk });
       var items = await controller.storage.read(['superkkk222']);
       const state = items['superkkk'] || {};
-      console.log(state);
+      if ('love' in state)
+        console.log(state.love);
+      else
+        console.log('nothing')*/
       //var beans = {id: 'cool', beans: 'garbanzo'};
       //controller.storage.write(beans);
       //var newbeans = controller.storage.read('cool');

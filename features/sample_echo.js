@@ -45,6 +45,7 @@ module.exports = function(controller) {
         var key = "AIzaSyCXOj-eYdjWCYP4i1FBoEHZj3gNAJovCDY";                // API KEY
         var id = "7c84da9a39b231c0d"; // CSE ID
         const imageSearch = require('image-search-google');
+        // loa
         var d = new Date();
         var cur_time = d.getTime();
         var keyword = message.text.slice(1);
