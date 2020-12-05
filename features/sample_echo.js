@@ -9,7 +9,7 @@ var hours = minutes * 60;
 var days = hours * 24;
 var query_count = 0;
 var fail_count = 0;
-var datastore = require("./datastore.js").async;
+
 //var d = new Date();
 //var t = d.getTime();
 function find_image(bot, message, result){

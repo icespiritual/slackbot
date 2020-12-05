@@ -11,7 +11,7 @@ const { BotkitCMSHelper } = require('botkit-plugin-cms');
 // Import a platform-specific adapter for slack.
 
 const { SlackAdapter, SlackMessageTypeMiddleware, SlackEventMiddleware } = require('botbuilder-adapter-slack');
-import { MongoClient } from 'mongodb';
+//import { MongoClient } from 'mongodb';
 const { MongoDbStorage } = require('botbuilder-storage-mongodb');
 
 // Load process.env values from .env file
@@ -19,10 +19,11 @@ require('dotenv').config();
 
 let storage = null;
 if (process.env.MONGO_URI) {
-  const mongoClient = new MongoClient(process.env.MONGO_URI, { useUnifiedTopology: true });
-  mongoClient.connect();
-  const collection = MongoDbStorage.getCollection(mongoClient);
-    storage = new MongoDbStorage(collection);
+  //const mongoClient = new MongoClient(process.env.MONGO_URI, { useUnifiedTopology: true });
+  //mongoClient.connect();
+  //const collection = MongoDbStorage.getCollection(mongoClient);
+//    storage = new MongoDbStorage(collection);
+      storage = new MongoDbStorage({url: process.env.MONGO_URI,});
 }
 
 
