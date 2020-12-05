@@ -19,9 +19,10 @@ require('dotenv').config();
 
 let storage = null;
 if (process.env.MONGO_URI) {
-    storage = new MongoDbStorage({
-        url : process.env.MONGO_URI,
-    });
+  const mongoClient = new MongoClient(process.env.MONGO_URI, { useUnifiedTopology: true });
+  mongoClient.connect();
+  const collection = MongoDbStorage.getCollection(mongoClient);
+    storage = new MongoDbStorage(collection);
 }
 
 
