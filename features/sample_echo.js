@@ -9,6 +9,7 @@ var hours = minutes * 60;
 var days = hours * 24;
 var query_count = 0;
 var fail_count = 0;
+var working = 0; // to avoid multi-enrtry
 
 //var d = new Date();
 //var t = d.getTime();
@@ -40,6 +41,12 @@ function find_image(bot, message, result){
 module.exports = function(controller) {
 
     controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
+      if (working == 1)
+      {
+        console.log('multi-entry!');
+        return;
+      }
+      working = 1;
       if (message.text.search('抽') === 0){
         console.log('抽!');
         var key = "AIzaSyCXOj-eYdjWCYP4i1FBoEHZj3gNAJovCDY";                // API KEY
@@ -73,10 +80,12 @@ module.exports = function(controller) {
         var keyword = message.text.slice(1);
         if (cur_time - last_query_time < 10000 && last_keyword == keyword){
           console.log('too near same query!');
+          working = 0;
           return;
         }
         if (keyword == 'momobot'){
           await bot.reply(message, `查我幹嘛`);
+          working = 0;
           return;
         }
         var last_hour = Math.floor(last_query_time / hours);
@@ -144,7 +153,9 @@ module.exports = function(controller) {
         var __query_count = {query_count: '0'};
         __query_count.query_count = query_count.toString(10);
         await controller.storage.write({ 'querycount': __query_count });
+        working = 0;
       }
+      working = 0;
     });
 
     controller.on('message', async(bot, message) => {
