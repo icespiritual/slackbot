@@ -20,6 +20,11 @@ function find_image(bot, message, result){
     var i = (j + start_value)%result.length;
     if (result[i].url.search('fbsbx') > 0 || result[i].url.search('kknews') > 0)
       continue;
+    var str_idx = result[i].url.search('.png');
+    if (str_idx <= 0)
+      str_idx = result[i].url.search('.jpg');
+    if (str_idx <= 0)
+      str_idx = result[i].url.search('.gif');
     if (result[i].url.search('.png') > 0 || result[i].url.search('.jpg') > 0 || result[i].url.search('.gif') > 0){
       console.log(message.text);
       console.log(result[i].url);
