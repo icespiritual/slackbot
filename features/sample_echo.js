@@ -47,12 +47,22 @@ function find_image(bot, message, result){
 module.exports = function(controller) {
 
     controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
-      if (working == 1)
+      var keyword = message.text.slice(1);
+      if (working == 1 && last_keyword == keyword)
       {
         console.log('multi-entry!');
         return;
       }
+      var d = new Date();
+      var cur_time = d.getTime();
+      if (cur_time - last_query_time < 10000 && last_keyword == keyword){
+        console.log('too near same query!');
+        working = 0;
+        return;
+      }
       working = 1;
+      last_keyword = keyword;
+      last_query_time = cur_time;
       if (message.text.search('抽') === 0){
         console.log('抽!');
         var key = "AIzaSyCXOj-eYdjWCYP4i1FBoEHZj3gNAJovCDY";                // API KEY
@@ -81,14 +91,6 @@ module.exports = function(controller) {
         else{
           console.log('lqst_query_time have loaded');
         }
-        var d = new Date();
-        var cur_time = d.getTime();
-        var keyword = message.text.slice(1);
-        if (cur_time - last_query_time < 10000 && last_keyword == keyword){
-          console.log('too near same query!');
-          working = 0;
-          return;
-        }
         if (keyword == 'momobot'){
           await bot.reply(message, `查我幹嘛`);
           working = 0;
@@ -106,8 +108,6 @@ module.exports = function(controller) {
         
         if (((cur_day > last_day) && cur_hour >= 8) || (cur_day == last_day && cur_hour >= 8 && last_hour < 8) || (cur_day - last_day > 1))
           query_count = 0;
-        last_keyword = keyword;
-        last_query_time = cur_time;
         // write to db
         var __last_query_time = {last_query_time: '0'};
         __last_query_time.last_query_time = last_query_time.toString(10);
@@ -144,6 +144,13 @@ module.exports = function(controller) {
             // try second page
             console.log('second page');
             const options = {page:11};
+            try{
+          result = await client.search(keyword, options);
+        }
+        catch(e){
+          console.log('search image error' + e);
+          too_many_request = 1;
+        }
             result = await client.search(message.text.slice(1), options);
             i = find_image(bot, message, result);
             if (i >= 0){
