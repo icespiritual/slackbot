@@ -145,13 +145,12 @@ module.exports = function(controller) {
             console.log('second page');
             const options = {page:11};
             try{
-          result = await client.search(keyword, options);
-        }
-        catch(e){
-          console.log('search image error' + e);
-          too_many_request = 1;
-        }
-            result = await client.search(message.text.slice(1), options);
+              result = await client.search(keyword, options);
+            }
+            catch(e){
+              console.log('search image error' + e);
+              too_many_request = 1;
+            }
             i = find_image(bot, message, result);
             if (i >= 0){
               query_count+= 2;
