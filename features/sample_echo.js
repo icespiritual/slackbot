@@ -25,6 +25,8 @@ function find_image(bot, message, result){
       str_idx = result[i].url.search('.jpg');
     if (str_idx <= 0)
       str_idx = result[i].url.search('.gif');
+    if (result[i].url.search('wikimedia') > 0)
+      str_idx = result[str_idx+4].url.search('.jpg');
     if (str_idx > 0){
       console.log(message.text);
       console.log(result[i].url);
