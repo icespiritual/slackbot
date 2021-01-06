@@ -10,6 +10,7 @@ var days = hours * 24;
 var query_count = 0;
 var fail_count = 0;
 var working = 0; // to avoid multi-enrtry
+var last_msg_id = '';
 
 //var d = new Date();
 //var t = d.getTime();
@@ -49,13 +50,13 @@ function find_image(bot, message, result){
 module.exports = function(controller) {
 
     controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
-      console.log(message);
       var keyword = message.text.slice(1);
-      if (working == 1)
+      if (message.client_msg_id == last_query_id)
       {
         console.log('multi-entry!');
         return;
       }
+      message.client_msg_id == last_query_id
       working = 1;
       if (message.text.search('抽') === 0){
         console.log('抽!');
