@@ -64,7 +64,6 @@ module.exports = function(controller) {
       }
       working = 1;
       last_keyword = keyword;
-      last_query_time = cur_time;
       if (message.text.search('抽') === 0){
         console.log('抽!');
         var key = "AIzaSyCXOj-eYdjWCYP4i1FBoEHZj3gNAJovCDY";                // API KEY
@@ -167,8 +166,10 @@ module.exports = function(controller) {
         var __query_count = {query_count: '0'};
         __query_count.query_count = query_count.toString(10);
         await controller.storage.write({ 'querycount': __query_count });
+        last_query_time = cur_time;
         working = 0;
       }
+      last_query_time = cur_time;
       working = 0;
     });
 
