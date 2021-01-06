@@ -51,12 +51,12 @@ module.exports = function(controller) {
 
     controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
       var keyword = message.text.slice(1);
-      if (message.client_msg_id == last_query_id)
+      if (message.client_msg_id == last_msg_id)
       {
-        console.log('multi-entry!');
+        console.log('same msg id!');
         return;
       }
-      message.client_msg_id == last_query_id
+      last_msg_id = message.client_msg_id;
       working = 1;
       if (message.text.search('抽') === 0){
         console.log('抽!');
