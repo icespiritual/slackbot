@@ -26,7 +26,7 @@ function find_image(bot, message, result){
     if (str_idx <= 0)
       str_idx = result[i].url.search('.gif');
     if (result[i].url.search('wikimedia') > 0)
-      str_idx = result[str_idx+4].url.search('.jpg');
+      str_idx = result[i].url.slice(str_idx+4).search('.jpg');
     if (str_idx > 0){
       console.log(message.text);
       console.log(result[i].url);
@@ -49,6 +49,7 @@ function find_image(bot, message, result){
 module.exports = function(controller) {
 
     controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
+      console.log(message);
       var keyword = message.text.slice(1);
       if (working == 1)
       {
