@@ -50,20 +50,12 @@ module.exports = function(controller) {
 
     controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
       var keyword = message.text.slice(1);
-      if (working == 1 && last_keyword == keyword)
+      if (working == 1)
       {
         console.log('multi-entry!');
         return;
       }
-      var d = new Date();
-      var cur_time = d.getTime();
-      if (cur_time - last_query_time < 10000 && last_keyword == keyword){
-        console.log('too near same query!');
-        working = 0;
-        return;
-      }
       working = 1;
-      last_keyword = keyword;
       if (message.text.search('抽') === 0){
         console.log('抽!');
         var key = "AIzaSyCXOj-eYdjWCYP4i1FBoEHZj3gNAJovCDY";                // API KEY
@@ -97,6 +89,14 @@ module.exports = function(controller) {
           working = 0;
           return;
         }
+        var d = new Date();
+        var cur_time = d.getTime();
+        if (cur_time - last_query_time < 10000 && last_keyword == keyword){
+          console.log('too near same query!');
+          working = 0;
+          return;
+        }
+        last_keyword = keyword;
         var last_hour = Math.floor(last_query_time / hours);
         last_hour = last_hour % 24;
         var last_day = Math.floor(last_query_time / days);
@@ -110,6 +110,7 @@ module.exports = function(controller) {
         if (((cur_day > last_day) && cur_hour >= 8) || (cur_day == last_day && cur_hour >= 8 && last_hour < 8) || (cur_day - last_day > 1))
           query_count = 0;
         // write to db
+        last_query_time = cur_time;
         var __last_query_time = {last_query_time: '0'};
         __last_query_time.last_query_time = last_query_time.toString(10);
         await controller.storage.write({ 'lastquerytime': __last_query_time });
@@ -166,10 +167,8 @@ module.exports = function(controller) {
         var __query_count = {query_count: '0'};
         __query_count.query_count = query_count.toString(10);
         await controller.storage.write({ 'querycount': __query_count });
-        last_query_time = cur_time;
         working = 0;
       }
-      last_query_time = cur_time;
       working = 0;
     });
 
