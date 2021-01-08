@@ -19,7 +19,7 @@ function find_image(bot, message, result){
   var start_value = Math.floor(Math.random() * 5);
   for (var j=0;j<result.length; j++ ) {
     var i = (j + start_value)%result.length;
-    if (result[i].url.search('fbsbx') > 0 || result[i].url.search('kknews') > 0)
+    if (result[i].url.search('fbsbx') > 0 || result[i].url.search('kknews') > 0 || result[i].url.search('hk01.com') > 0)
       continue;
     var str_idx = result[i].url.search('.png');
     if (str_idx <= 0)
