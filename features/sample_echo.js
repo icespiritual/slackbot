@@ -21,13 +21,11 @@ function find_image(bot, message, result){
     var i = (j + start_value)%result.length;
     if (result[i].url.search('fbsbx') > 0 || result[i].url.search('kknews') > 0 || result[i].url.search('hk01.com') > 0)
       continue;
-    var str_idx = result[i].url.search('.png');
+    var str_idx = result[i].url.lastIndexOf('.png');
     if (str_idx <= 0)
-      str_idx = result[i].url.search('.jpg');
+      str_idx = result[i].url.lastIndexOf('.jpg');
     if (str_idx <= 0)
-      str_idx = result[i].url.search('.gif');
-    if (result[i].url.search('wikimedia') > 0)
-      str_idx = result[i].url.slice(str_idx+4).search('.jpg');
+      str_idx = result[i].url.lastIndexOf('.gif');
     if (str_idx > 0){
       console.log(message.text);
       console.log(result[i].url);
