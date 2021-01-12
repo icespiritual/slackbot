@@ -84,6 +84,7 @@ module.exports = function(controller) {
         else{
           console.log('lqst_query_time have loaded');
         }
+        // sepecific behavior about keyword
         if (keyword == 'momobot'){
           await bot.reply(message, `查我幹嘛`);
           working = 0;
