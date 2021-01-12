@@ -90,6 +90,11 @@ module.exports = function(controller) {
           working = 0;
           return;
         }
+        else if (keyword == 'ㄇㄇ'){
+          await bot.reply(message, `https://i.imgur.com/Adp22A2.jpg`);
+          working = 0;
+          return;
+        }
         var d = new Date();
         var cur_time = d.getTime();
         if (cur_time - last_query_time < 10000 && last_keyword == keyword){
@@ -136,9 +141,12 @@ module.exports = function(controller) {
         else{
           if (too_many_request == 1){
             fail_count++;
-            if (fail_count % 3 == 0)
+            var rng_value = Math.floor(Math.random() * 10);
+            if (fail_count == 1)
+              rng_value = 9;
+            if (rng_value < 3)
               await bot.reply(message, '阿就說滿了齁');
-            else if (fail_count % 10 == 0)
+            else if (fail_count < 5)
               await bot.reply(message, '滿啦, 再玩要壞掉了');
             else
               await bot.reply(message, '滿了, 明天請早(' + query_count + '/100)');
