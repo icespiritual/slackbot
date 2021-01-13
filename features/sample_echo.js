@@ -101,7 +101,7 @@ module.exports = function(controller) {
           return;
         }
         else if (keyword == '社長老婆'){
-          console.log("社長老婆!")
+          console.log('社長老婆!')
           var rng_value = Math.floor(Math.random() * 10);
           if (rng_value < 3)
             keyword = '張景嵐';
@@ -150,7 +150,7 @@ module.exports = function(controller) {
         var i = find_image(bot, message, result);
         if (i > 0){
           query_count++;
-          await bot.reply(message, message.text + '(' + query_count + '/100)\n' + result[i].url);
+          await bot.reply(message, keyword + '(' + query_count + '/100)\n' + result[i].url);
           fail_count = 0;
         }
         else{
@@ -180,7 +180,7 @@ module.exports = function(controller) {
             i = find_image(bot, message, result);
             if (i >= 0){
               query_count+= 2;
-              await bot.reply(message, message.text + '(' + query_count + '/100)\n' + result[i].url);
+              await bot.reply(message, keyword + '(' + query_count + '/100)\n' + result[i].url);
               fail_count = 0;
             }
             else{
