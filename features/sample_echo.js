@@ -100,6 +100,11 @@ module.exports = function(controller) {
           working = 0;
           return;
         }
+        else if (keyword == '社長'){
+          await bot.reply(message, `https://i.imgur.com/uhsrpJQ.png`);
+          working = 0;
+          return;
+        }
         else if (keyword == '社長老婆'){
           console.log('社長老婆!')
           var rng_value = Math.floor(Math.random() * 10);
