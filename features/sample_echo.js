@@ -95,6 +95,21 @@ module.exports = function(controller) {
           working = 0;
           return;
         }
+        else if (keyword == 'ㄇㄎ'){
+          await bot.reply(message, `https://i.imgur.com/vfVs7xB.jpeg`);
+          working = 0;
+          return;
+        }
+        else if (keyword == '社長老婆'){
+          console.log("社長老婆!")
+          var rng_value = Math.floor(Math.random() * 10);
+          if (rng_value < 3)
+            keyword = '張景嵐';
+          else if (rng_value < 6)
+            keyword = '大元';
+          else
+            keyword = '曾智希';
+        }
         var d = new Date();
         var cur_time = d.getTime();
         if (cur_time - last_query_time < 10000 && last_keyword == keyword){
