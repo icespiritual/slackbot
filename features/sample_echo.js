@@ -174,7 +174,7 @@ module.exports = function(controller) {
         if (images.length > 0){
           var img_url = keyword + '(' + query_count + '/100)\n';
           for (var i = 0;i<images.length;i++){
-            _交
+            img_url = img_url + result[images[i]].url + '\n';
           }
           await bot.reply(message, img_url);
           query_count++;
@@ -204,10 +204,14 @@ module.exports = function(controller) {
               console.log('search image error' + e);
               too_many_request = 1;
             }
-            i = find_image(bot, message, result, draw_mode);
-            if (i >= 0){
-              query_count+= 2;
-              await bot.reply(message, keyword + '(' + query_count + '/100)\n' + result[i].url);
+            var images = find_image(bot, message, result, draw_mode);
+            if (images.length > 0){
+              var img_url = keyword + '(' + query_count + '/100)\n';
+              for (var i = 0;i<images.length;i++){
+                img_url = img_url + result[images[i]].url + '\n';
+              }
+              await bot.reply(message, img_url);
+              query_count += 2;
               fail_count = 0;
             }
             else{
