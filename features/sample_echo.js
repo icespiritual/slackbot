@@ -73,7 +73,7 @@ module.exports = function(controller) {
         var keyword = message.text.slice(draw_mode);
         if (keyword.length == 0)
         {
-          await bot.reply(message, "幹嘛亂抽");
+          await bot.reply(message, "請別抽空字串");
           return;
         }
         var key = "AIzaSyCXOj-eYdjWCYP4i1FBoEHZj3gNAJovCDY";                // API KEY
