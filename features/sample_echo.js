@@ -54,6 +54,11 @@ module.exports = function(controller) {
         console.log('same msg id!');
         return;
       }
+      if (keyword.length() == 0)
+      {
+        
+        return;
+      }
       last_msg_id = message.client_msg_id;
       working = 1;
       if (message.text.search('抽') === 0){
