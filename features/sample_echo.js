@@ -14,9 +14,14 @@ var last_msg_id = '';
 
 //var d = new Date();
 //var t = d.getTime();
-function find_image(bot, message, result){
+function find_image(bot, message, result, draw_mode){
   console.log(result);
   var start_value = Math.floor(Math.random() * 5);
+  var draw_count = (draw_mode == 2) ? 3 : 1;
+  var drawn_count = 0;
+  var found_images = [];
+  if (draw_count > 1)
+    start_value = 0;
   for (var j=0;j<result.length; j++ ) {
     var i = (j + start_value)%result.length;
     if (result[i].url.search('fbsbx') > 0 || result[i].url.search('kknews') > 0 || result[i].url.search('hk01.com') > 0)
@@ -39,30 +44,38 @@ function find_image(bot, message, result){
                 },
               ]
       });*/
-      return i;
+      found_images.push(i);
+      drawn_count++;
+      if (drawn_count >= draw_count)
+        return found_images;
     }
   }
-  return -1;
+  return found_images;
 }
 
 module.exports = function(controller) {
 
     controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
-      var keyword = message.text.slice(1);
       if (message.client_msg_id == last_msg_id)
       {
         console.log('same msg id!');
         return;
       }
-      if (keyword.length() == 0)
-      {
-        
-        return;
-      }
       last_msg_id = message.client_msg_id;
       working = 1;
-      if (message.text.search('抽') === 0){
+      var draw_mode = 0; // 0: wrong, 1:draw once 2: draw three times
+      if (message.text.search('抽') === 0)
+        draw_mode = 1;
+      else if (message.text.search('爆抽') === 0)
+        draw_mode = 2;
+      if (draw_mode > 0){
         console.log('抽!');
+        var keyword = message.text.slice(draw_mode);
+        if (keyword.length() == 0)
+        {
+          await bot.reply(message, "幹嘛亂抽");
+          return;
+        }
         var key = "AIzaSyCXOj-eYdjWCYP4i1FBoEHZj3gNAJovCDY";                // API KEY
         var id = "7c84da9a39b231c0d"; // CSE ID
         const imageSearch = require('image-search-google');
