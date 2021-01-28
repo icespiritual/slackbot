@@ -120,7 +120,29 @@ module.exports = function(controller) {
           return;
         }
         else if (keyword == 'ㄇㄎ'){
-          await bot.reply(message, `https://i.imgur.com/vfVs7xB.jpeg`);
+          var rng_value = Math.floor(Math.random() * 2);
+          if (rng_value < 1)
+            await bot.reply(message, `https://i.imgur.com/vfVs7xB.jpeg`);
+          else
+            await bot.reply(message, `https://upload.cc/i1/2021/01/28/pv1oqH.gif`);
+          
+          working = 0;
+          return;
+        }
+        else if (keyword == '52'){
+          var rng_value = Math.floor(Math.random() * 7);
+          if (rng_value < 1)
+            await bot.reply(message, `https://i.imgur.com/h9T5m0e.jpg`);
+          else if (rng_value < 2)
+            await bot.reply(message, `https://i.imgur.com/PXRbkFd.jpg`);
+          else if (rng_value < 3)
+            await bot.reply(message, `https://i.imgur.com/MrLkboU.jpg`);
+          else if (rng_value < 4)
+            await bot.reply(message, `https://i.imgur.com/Zke2Cyl.jpg`);
+          else if (rng_value < 5)
+            await bot.reply(message, `https://i.imgur.com/B8niuA4.jpg`);
+          else if (rng_value < 6)
+            await bot.reply(message, `https://i.imgur.com/eyF1PW9.jpg`);
           working = 0;
           return;
         }
