@@ -130,7 +130,7 @@ module.exports = function(controller) {
           return;
         }
         else if (keyword == '52'){
-          var rng_value = Math.floor(Math.random() * 7);
+          var rng_value = Math.floor(Math.random() * 6);
           if (rng_value < 1)
             await bot.reply(message, `https://i.imgur.com/h9T5m0e.jpg`);
           else if (rng_value < 2)
@@ -141,7 +141,7 @@ module.exports = function(controller) {
             await bot.reply(message, `https://i.imgur.com/Zke2Cyl.jpg`);
           else if (rng_value < 5)
             await bot.reply(message, `https://i.imgur.com/B8niuA4.jpg`);
-          else if (rng_value < 6)
+          else
             await bot.reply(message, `https://i.imgur.com/eyF1PW9.jpg`);
           working = 0;
           return;
