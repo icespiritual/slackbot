@@ -161,6 +161,11 @@ module.exports = function(controller) {
           else
             keyword = '曾智希';
         }
+        else if (keyword == '關鍵字列表'){
+          await bot.reply(message, 'ㄇㄇ ㄇㄎ 52 社長 社長老婆');
+          working = 0;
+          return;
+        }
         var d = new Date();
         var cur_time = d.getTime();
         if (cur_time - last_query_time < 10000 && last_keyword == keyword){
