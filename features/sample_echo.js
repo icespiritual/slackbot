@@ -108,6 +108,9 @@ module.exports = function(controller) {
           working = 0;
           return;
         }
+        else if (keyword == 'momo'){
+          keyword = 'Sakura Momo';
+        }
         else if (keyword == 'ㄇㄇ'){
           var rng_value = Math.floor(Math.random() * 9);
           if (rng_value < 3)
@@ -162,7 +165,7 @@ module.exports = function(controller) {
             keyword = '曾智希';
         }
         else if (keyword == '關鍵字列表'){
-          await bot.reply(message, 'ㄇㄇ ㄇㄎ 52 社長 社長老婆');
+          await bot.reply(message, 'momo ㄇㄇ ㄇㄎ 52 社長 社長老婆');
           working = 0;
           return;
         }
