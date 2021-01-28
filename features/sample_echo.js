@@ -109,7 +109,13 @@ module.exports = function(controller) {
           return;
         }
         else if (keyword == 'ㄇㄇ'){
-          await bot.reply(message, `https://i.imgur.com/Adp22A2.jpg`);
+          var rng_value = Math.floor(Math.random() * 9);
+          if (rng_value < 3)
+            await bot.reply(message, `https://i.imgur.com/Adp22A2.jpg`);
+          else if (rng_value < 6)
+            await bot.reply(message, `https://i.imgur.com/C5gFcE5.png`);
+          else
+            await bot.reply(message, `https://i.imgur.com/iPftKTt.png`);
           working = 0;
           return;
         }
