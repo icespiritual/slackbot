@@ -112,13 +112,15 @@ module.exports = function(controller) {
           keyword = 'Sakura Momo';
         }
         else if (keyword == 'ㄇㄇ'){
-          var rng_value = Math.floor(Math.random() * 9);
-          if (rng_value < 3)
+          var rng_value = Math.floor(Math.random() * 4);
+          if (rng_value < 1)
             await bot.reply(message, `https://i.imgur.com/Adp22A2.jpg`);
-          else if (rng_value < 6)
+          else if (rng_value < 2)
             await bot.reply(message, `https://i.imgur.com/C5gFcE5.png`);
-          else
+          else if (rng_value < 3)
             await bot.reply(message, `https://i.imgur.com/iPftKTt.png`);
+          else
+            await bot.reply(message, `https://i.imgur.com/X7j7uiV.jpg`);
           working = 0;
           return;
         }
