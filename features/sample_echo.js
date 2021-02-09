@@ -152,7 +152,15 @@ module.exports = function(controller) {
           return;
         }
         else if (keyword == '社長'){
-          await bot.reply(message, `https://i.imgur.com/uhsrpJQ.png`);
+          var rng_value = Math.floor(Math.random() * 4);
+          if (rng_value < 1)
+            await bot.reply(message, `https://i.imgur.com/uhsrpJQ.png`);
+          else if (rng_value < 2)
+            await bot.reply(message, `https://i.imgur.com/jkDFnmt.jpg`);
+          else if (rng_value < 3)
+            await bot.reply(message, `https://i.imgur.com/6O8Xerj.jpg`);
+          else
+            await bot.reply(message, `https://i.imgur.com/nze0LHp.jpg`);
           working = 0;
           return;
         }
