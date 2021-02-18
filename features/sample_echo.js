@@ -27,6 +27,8 @@ function find_image(bot, message, result, draw_mode){
     if (result[i].url.search('fbsbx') > 0 || result[i].url.search('kknews') > 0 || result[i].url.search('hk01.com') > 0)
       continue;
     var str_idx = result[i].url.lastIndexOf('.png');
+    if (result[i].url.search('wikia.nocookie.net') > 0)
+      str_idx = result[i].url.length - 4;
     if (str_idx <= 0)
       str_idx = result[i].url.lastIndexOf('.jpg');
     if (str_idx <= 0)
