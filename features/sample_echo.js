@@ -171,8 +171,15 @@ module.exports = function(controller) {
           var rng_value = Math.floor(Math.random() * 10);
           if (rng_value < 3)
             keyword = '張景嵐';
-          else if (rng_value < 6)
+          else if (rng_value < 6){
             keyword = '大元';
+            var rng_value2 = Math.floor(Math.random() * 4);
+            if (rng_value2 < 1){
+              await bot.reply(message, `https://i.imgur.com/kO87NVp.jpg`);
+              working = 0;
+              return;
+            }
+          }
           else
             keyword = '曾智希';
         }
