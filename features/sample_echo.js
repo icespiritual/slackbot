@@ -31,6 +31,8 @@ function find_image(bot, message, result, draw_mode){
       str_idx = result[i].url.length - 4;
     if (str_idx <= 0)
       str_idx = result[i].url.lastIndexOf('.jpg');
+    if (result[i].url.search('ws.126.net') > 0)
+      str_idx = result[i].url.length - 4;
     if (str_idx <= 0)
       str_idx = result[i].url.lastIndexOf('.gif');
     if (str_idx > 0){
