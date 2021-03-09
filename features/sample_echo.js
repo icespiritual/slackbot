@@ -60,7 +60,7 @@ function find_image(bot, message, result, draw_mode){
 module.exports = function(controller) {
 
     controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
-      if (last_msg_id.last_msg_id.find(message.client_msg_id))
+      if (last_msg_id.length > 0 && last_msg_id.indexOf(message.client_msg_id) >= 0)
       {
         console.log('same msg id!');
         return;
