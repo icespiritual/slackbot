@@ -155,6 +155,8 @@ module.exports = function(controller) {
           working = 0;
           return;
         }
+        else if (keyword == '52'){
+        }
         else if (keyword == '社長'){
           var rng_value = Math.floor(Math.random() * 4);
           if (rng_value < 1)
