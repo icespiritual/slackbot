@@ -10,7 +10,7 @@ var days = hours * 24;
 var query_count = 0;
 var fail_count = 0;
 var working = 0; // to avoid multi-enrtry
-var last_msg_id = '';
+var last_msg_id = [];
 
 //var d = new Date();
 //var t = d.getTime();
@@ -60,12 +60,12 @@ function find_image(bot, message, result, draw_mode){
 module.exports = function(controller) {
 
     controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
-      if (message.client_msg_id == last_msg_id)
+      if (last_msg_id.last_msg_id.find(message.client_msg_id))
       {
         console.log('same msg id!');
         return;
       }
-      last_msg_id = message.client_msg_id;
+      last_msg_id.push(message.client_msg_id);
       working = 1;
       var draw_mode = 0; // 0: wrong, 1:draw once 2: draw three times
       if (message.text.search('抽') === 0)
@@ -155,7 +155,40 @@ module.exports = function(controller) {
           working = 0;
           return;
         }
-        else if (keyword == '52'){
+        else if (keyword == '52躺'){
+          await bot.reply(message, `https://i.imgur.com/h9T5m0e.jpg`);
+          working = 0;
+          return;
+        }
+        else if (keyword == '52婷宣'){
+          await bot.reply(message, `https://i.imgur.com/PXRbkFd.jpg`);
+          working = 0;
+          return;
+        }
+        else if (keyword == '52枝枝'){
+          await bot.reply(message, `https://i.imgur.com/MrLkboU.jpg`);
+          working = 0;
+          return;
+        }
+        else if (keyword == '52枝枝神秘'){
+          await bot.reply(message, `https://i.imgur.com/Zke2Cyl.jpg`);
+          working = 0;
+          return;
+        }
+        else if (keyword == '52大波'){
+          await bot.reply(message, `https://i.imgur.com/B8niuA4.jpg`);
+          working = 0;
+          return;
+        }
+        else if (keyword == '52坐'){
+          await bot.reply(message, `https://i.imgur.com/eyF1PW9.jpg`);
+          working = 0;
+          return;
+        }
+        else if (keyword == '52列表'){
+          await bot.reply(message, '52躺 52婷宣 52枝枝 52枝枝神秘 52大波 52坐');
+          working = 0;
+          return;
         }
         else if (keyword == '社長'){
           var rng_value = Math.floor(Math.random() * 4);
