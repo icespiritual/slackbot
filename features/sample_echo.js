@@ -221,7 +221,7 @@ module.exports = function(controller) {
             keyword = '曾智希';
         }
         else if (keyword == '血流成河'){
-          await bot.reply(message, `https://i.imgur.com/WceCGc8.jpg`);
+          await bot.reply(message, `https://i.imgur.com/FrfHotj.jpg`);
           working = 0;
           return;
         }
