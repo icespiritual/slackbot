@@ -11,6 +11,7 @@ var query_count = 0;
 var fail_count = 0;
 var working = 0; // to avoid multi-enrtry
 var last_msg_id = [];
+var last_source = [];
 
 //var d = new Date();
 //var t = d.getTime();
@@ -49,6 +50,7 @@ function find_image(bot, message, result, draw_mode){
               ]
       });*/
       found_images.push(i);
+      last_source.push(result[i].context);
       drawn_count++;
       if (drawn_count >= draw_count)
         return found_images;
@@ -225,6 +227,12 @@ module.exports = function(controller) {
           working = 0;
           return;
         }
+        else if (keyword == '出處'){
+          for (var i = 0;i<last_source.length;i++)
+            await bot.reply(message, last_source[i]);
+          working = 0;
+          return;
+        }
         else if (keyword == '關鍵字列表'){
           await bot.reply(message, 'momo ㄇㄇ ㄇㄎ 52 52列表 社長 社長老婆 血流成河');
           working = 0;
@@ -255,6 +263,9 @@ module.exports = function(controller) {
         var __last_query_time = {last_query_time: '0'};
         __last_query_time.last_query_time = last_query_time.toString(10);
         await controller.storage.write({ 'lastquerytime': __last_query_time });
+        
+        // reset lastsource
+        last_source = [];
         
         const client = new imageSearch(id, key);
         const options = {page:1};
