@@ -175,7 +175,7 @@ module.exports = function(controller) {
           working = 0;
           return;
         }
-        else if (keyword == '52大波'){
+        else if (keyword == '52謎之女'){
           await bot.reply(message, `https://i.imgur.com/B8niuA4.jpg`);
           working = 0;
           return;
@@ -186,7 +186,7 @@ module.exports = function(controller) {
           return;
         }
         else if (keyword == '52列表'){
-          await bot.reply(message, '52躺 52婷宣 52枝枝 52枝枝神秘 52大波 52坐');
+          await bot.reply(message, '52躺 52婷宣 52枝枝 52枝枝神秘 52謎之女 52坐');
           working = 0;
           return;
         }
@@ -220,8 +220,13 @@ module.exports = function(controller) {
           else
             keyword = '曾智希';
         }
+        else if (keyword == '血流成河'){
+          await bot.reply(message, `https://i.imgur.com/WceCGc8.jpg`);
+          working = 0;
+          return;
+        }
         else if (keyword == '關鍵字列表'){
-          await bot.reply(message, 'momo ㄇㄇ ㄇㄎ 52 社長 社長老婆');
+          await bot.reply(message, 'momo ㄇㄇ ㄇㄎ 52 52列表 社長 社長老婆 血流成河');
           working = 0;
           return;
         }
