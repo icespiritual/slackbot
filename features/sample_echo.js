@@ -333,6 +333,10 @@ module.exports = function(controller) {
         working = 0;
       }
       working = 0;
+      if (last_msg_id.length > 50)
+      {
+        last_msg_id = [];
+      }
     });
 
     controller.on('message', async(bot, message) => {
