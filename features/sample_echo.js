@@ -27,7 +27,7 @@ function find_image(bot, message, result, draw_mode){
     var i = (j + start_value)%result.length;
     if (result[i].url.search('fbsbx') > 0 || result[i].url.search('kknews') > 0 || result[i].url.search('hk01.com') > 0)
       continue;
-    var str_idx = result[i].url.lastIndexOf('.png');
+    /*var str_idx = result[i].url.lastIndexOf('.png');
     if (result[i].url.search('wikia.nocookie.net') > 0)
       str_idx = result[i].url.length - 4;
     if (str_idx <= 0)
@@ -35,11 +35,11 @@ function find_image(bot, message, result, draw_mode){
     if (result[i].url.search('ws.126.net') > 0)
       str_idx = result[i].url.length - 4;
     if (str_idx <= 0)
-      str_idx = result[i].url.lastIndexOf('.gif');
-    if (str_idx > 0){
+      str_idx = result[i].url.lastIndexOf('.gif');*/
+    if (true)/*(str_idx > 0)*/{
       console.log(message.text);
       console.log(result[i].url);
-      result[i].url = result[i].url.slice(0,str_idx+4);
+      //result[i].url = result[i].url.slice(0,str_idx+4);
       /*await bot.reply(message,{
               blocks: [
                 {
