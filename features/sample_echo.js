@@ -131,9 +131,11 @@ module.exports = function(controller) {
           return;
         }
         else if (keyword == 'ㄇㄎ'){
-          var rng_value = Math.floor(Math.random() * 2);
+          var rng_value = Math.floor(Math.random() * 3);
           if (rng_value < 1)
             await bot.reply(message, `https://i.imgur.com/vfVs7xB.jpeg`);
+          if (rng_value < 2)
+            await bot.reply(message, `https://i.imgur.com/VVQiBX3.jpg`);
           else
             await bot.reply(message, `https://upload.cc/i1/2021/01/28/pv1oqH.gif`);
           
