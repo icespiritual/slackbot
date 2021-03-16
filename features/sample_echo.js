@@ -247,20 +247,20 @@ module.exports = function(controller) {
           url: "http://rate.bot.com.tw/xrt?Lang=zh-TW",
           method: "GET"
           }, function(e,r,b) {
-          if(e || !b) {
-            console.log('get bank html error!');
-            return; }
-          var $ = cheerio.load(b);
-          var result = [];
-          var titles = $("td.rate-content-cash.text-right.print_hide");
-          console.log(titles.length);
-          for(var i=0;i<titles.length;i++) {
-            result.push($(titles[i]).text());
-            //console.log(i);
-            //console.log(result[i]);
-          }
-          japan_rate = result[15];
-            console.log(japan_rate);
+            if(e || !b) {
+              console.log('get bank html error!');
+              return; }
+            /*var $ = cheerio.load(b);
+            var result = [];
+            var titles = $("td.rate-content-cash.text-right.print_hide");
+            console.log(titles.length);
+            for(var i=0;i<titles.length;i++) {
+              result.push($(titles[i]).text());
+              //console.log(i);
+              //console.log(result[i]);
+            }
+            japan_rate = result[15];
+              console.log(japan_rate);*/
           });
           await bot.reply(message, japan_rate);
           working = 0;
