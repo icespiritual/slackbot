@@ -241,7 +241,8 @@ module.exports = function(controller) {
           return;
         }
         else if (keyword == '日幣'){
-          var result = '';
+          console.log('japan rate');
+          var japan_rate = '';
           request({
           url: "http://rate.bot.com.tw/xrt?Lang=zh-TW",
           method: "GET"
@@ -255,11 +256,13 @@ module.exports = function(controller) {
           console.log(titles.length);
           for(var i=0;i<titles.length;i++) {
             result.push($(titles[i]).text());
-            console.log(result[i]);
+            //console.log(i);
+            //console.log(result[i]);
           }
-          result = result[15];
+          japan_rate = result[15];
+            console.log(japan_rate);
           });
-          await bot.reply(message, result);
+          await bot.reply(message, '啥毛病...');
           working = 0;
           return;
         }
