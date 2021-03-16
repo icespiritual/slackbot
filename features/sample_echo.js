@@ -59,6 +59,19 @@ function find_image(bot, message, result, draw_mode){
   return found_images;
 }
 
+function get_key_list(table){
+	var key_list = '';
+	for (var prop in table){
+        key_list = key_list + prop + ' ';
+    }
+	return key_list;
+}
+
+function get_random_item(table){
+	var keys = Object.keys(table);
+     return table[keys[ keys.length * Math.random() << 0]];
+}
+
 module.exports = function(controller) {
 
     controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
