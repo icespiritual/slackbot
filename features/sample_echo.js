@@ -262,7 +262,7 @@ module.exports = function(controller) {
           japan_rate = result[15];
             console.log(japan_rate);
           });
-          await bot.reply(message, '啥毛病...');
+          await bot.reply(message, japan_rate);
           working = 0;
           return;
         }
