@@ -156,17 +156,6 @@ module.exports = function(controller) {
             working = 0;
             return;
           }
-          /*var rng_value = Math.floor(Math.random() * 4);
-          if (rng_value < 1)
-            await bot.reply(message, `https://i.imgur.com/Adp22A2.jpg`);
-          else if (rng_value < 2)
-            await bot.reply(message, `https://i.imgur.com/C5gFcE5.png`);
-          else if (rng_value < 3)
-            await bot.reply(message, `https://i.imgur.com/iPftKTt.png`);
-          else
-            await bot.reply(message, `https://i.imgur.com/X7j7uiV.jpg`);
-          working = 0;
-          return;*/
         }
         else if (keyword == 'ㄇㄎ'){
           var rng_value = Math.floor(Math.random() * 3);
@@ -208,37 +197,6 @@ module.exports = function(controller) {
             return;
           }
         }
-        /*else if (keyword == '52躺'){
-          await bot.reply(message, `https://i.imgur.com/h9T5m0e.jpg`);
-          working = 0;
-          return;
-        }
-        else if (keyword == '52婷宣'){
-          await bot.reply(message, `https://i.imgur.com/PXRbkFd.jpg`);
-          working = 0;
-          return;
-        }
-        else if (keyword == '52枝枝'){
-          await bot.reply(message, `https://i.imgur.com/MrLkboU.jpg`);
-          working = 0;
-          return;
-        }
-        else if (keyword == '52枝枝神秘'){
-          await bot.reply(message, `https://i.imgur.com/Zke2Cyl.jpg`);
-          working = 0;
-          return;
-        }
-        else if (keyword == '52謎之女'){
-          await bot.reply(message, `https://i.imgur.com/B8niuA4.jpg`);
-          working = 0;
-          return;
-        }
-        else if (keyword == '52坐'){
-          await bot.reply(message, `https://i.imgur.com/eyF1PW9.jpg`);
-          working = 0;
-          return;
-        }
-        */
         else if (keyword == '社長'){
           var rng_value = Math.floor(Math.random() * 4);
           if (rng_value < 1)
