@@ -42,7 +42,7 @@ module.exports = function(controller) {
         await bot.say('And this should also be in that thread!');
     });
 
-    controller.hears('blocks', 'message', async(bot, message) => {
+    /*controller.hears('blocks', 'message', async(bot, message) => {
 
         await bot.reply(message,{
             blocks: [
@@ -130,7 +130,7 @@ module.exports = function(controller) {
             ]
         });
 
-    });
+    });*/
     controller.hears('testblock', 'message', async(bot, message) => {
       await bot.reply(message,{
               blocks: [
