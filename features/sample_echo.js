@@ -130,8 +130,33 @@ module.exports = function(controller) {
         else if (keyword == 'momo'){
           keyword = 'Sakura Momo';
         }
-        else if (keyword == 'ㄇㄇ'){
-          var rng_value = Math.floor(Math.random() * 4);
+        else if (message.text.search('ㄇㄇ') >= 0){
+          var tablekeith = new Object();
+          tablekeith.pㄇㄇ貓 = `https://i.imgur.com/Adp22A2.jpg`;
+          tablekeith.pㄇㄇ北斗 = `https://i.imgur.com/C5gFcE5.png`;
+          tablekeith.pㄇㄇ獵人 = `https://i.imgur.com/iPftKTt.png`;
+          tablekeith.pㄇㄇ枝枝 = `https://i.imgur.com/X7j7uiV.jpg`;
+          
+          var key_name = 'p' + keyword;
+          if (keyword == 'ㄇㄇ'){
+            var random_item = get_random_item(tablekeith);
+            await bot.reply(message, random_item);
+            working = 0;
+            return;  
+          }
+          else if (tablekeith.hasOwnProperty(key_name)){
+            await bot.reply(message, tablekeith[key_name]);
+            working = 0;
+            return;
+          }
+          else if (keyword == 'ㄇㄇ列表'){
+            var all_key_name = get_key_list(tablekeith);
+            console.log(all_key_name);
+            await bot.reply(message, all_key_name);
+            working = 0;
+            return;
+          }
+          /*var rng_value = Math.floor(Math.random() * 4);
           if (rng_value < 1)
             await bot.reply(message, `https://i.imgur.com/Adp22A2.jpg`);
           else if (rng_value < 2)
@@ -141,7 +166,7 @@ module.exports = function(controller) {
           else
             await bot.reply(message, `https://i.imgur.com/X7j7uiV.jpg`);
           working = 0;
-          return;
+          return;*/
         }
         else if (keyword == 'ㄇㄎ'){
           var rng_value = Math.floor(Math.random() * 3);
