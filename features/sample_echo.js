@@ -244,9 +244,11 @@ module.exports = function(controller) {
           console.log('japan rate');
           var japan_rate = '';
           request({
-          url: "http://rate.bot.com.tw/xrt?Lang=zh-TW",
+          url: "https://rate.bot.com.tw/xrt?Lang=zh-TW",
           method: "GET"
           }, function(e,r,b) {
+            console.error('error:', e);
+            console.log('statusCode:', r && r.statusCode);
             if(e || !b) {
               console.log('get bank html error!');
               return; }
