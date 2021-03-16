@@ -2,6 +2,8 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Licensed under the MIT License.
  */
+var request = require("request");
+var cheerio = require("cheerio");
 var last_query_time = 0;
 var last_keyword = ' ';
 var minutes = 1000 * 60;
@@ -238,8 +240,31 @@ module.exports = function(controller) {
           working = 0;
           return;
         }
+        else if (keyword == '日幣'){
+          var result = '';
+          request({
+          url: "http://rate.bot.com.tw/xrt?Lang=zh-TW",
+          method: "GET"
+          }, function(e,r,b) {
+          if(e || !b) {
+            console.log('get bank html error!');
+            return; }
+          var $ = cheerio.load(b);
+          var result = [];
+          var titles = $("td.rate-content-cash.text-right.print_hide");
+          console.log(titles.length);
+          for(var i=0;i<titles.length;i++) {
+            result.push($(titles[i]).text());
+            console.log(result[i]);
+          }
+          result = result[15];
+          });
+          await bot.reply(message, result);
+          working = 0;
+          return;
+        }
         else if (keyword == '關鍵字列表'){
-          await bot.reply(message, 'momo ㄇㄇ ㄇㄎ 52 52列表 社長 社長老婆 血流成河');
+          await bot.reply(message, 'momo ㄇㄇ ㄇㄇ列表 ㄇㄎ 52 52列表 社長 社長老婆 血流成河 出處');
           working = 0;
           return;
         }
