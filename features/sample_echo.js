@@ -244,14 +244,38 @@ module.exports = function(controller) {
         else if (keyword == '日幣'){
           console.log('japan rate');
           var japan_rate = '';
-          const http = require("https")
+          /*const { WebClient } = require('@slack/web-api');
+
+          // Read a token from the environment variables
+          const token = process.env.botToken;
+
+          // Initialize
+          const web = new WebClient(token);*/
+          const http = require("https");
+          (async () => {
+
+          try {
+            // This method call should fail because we're giving it a bogus user ID to lookup.
+            http.get("https://rate.bot.com.tw/xrt?Lang=zh-TW", (res) => { //https://www.google.com'
+              console.log(`Got response: ${res.statusCode}`);
+              // consume response body
+              res.resume();
+            }).on('error', (e) => {
+              console.log(`Got error: ${e.message}`);
+            });
+          } catch (error) {
+            // Check the code property, and when its a PlatformError, log the whole response.
+            console.log(error.data);
+          }
+        })();
+          /*const http = require("https")
           http.get('https://www.google.com', (res) => {
             console.log(`Got response: ${res.statusCode}`);
             // consume response body
             res.resume();
           }).on('error', (e) => {
             console.log(`Got error: ${e.message}`);
-          });
+          });*/
             /*const got = require('got');
 
             (async () => {
@@ -272,7 +296,7 @@ module.exports = function(controller) {
                 //=> 'Internal server error ...'
               }
               })();*/
-          await bot.reply(message, japan_rate);
+          await bot.reply(message, "xxx" + japan_rate);
           working = 0;
           return;
         }
