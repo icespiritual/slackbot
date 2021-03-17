@@ -254,7 +254,7 @@ module.exports = function(controller) {
           const http = require("https");
           const got = require('got');
           
-          (async () => {
+          /*(async () => */{
 
           try {
             // This method call should fail because we're giving it a bogus user ID to lookup.
@@ -267,12 +267,12 @@ module.exports = function(controller) {
                 var $ = cheerio.load(response.body);
                 var result = [];
                 var titles = $("td.rate-content-cash.text-right.print_hide");
-                console.log(titles.length);
+                //console.log(titles.length);
                 for(var i=0;i<titles.length;i++) {
                   result.push($(titles[i]).text());
                 }
                 japan_rate = result[15];
-            console.log(typeof(japan_rate));
+            //console.log(typeof(japan_rate));
             /*}).on('error', (e) => {
               console.log(`Got error: ${e.message}`);
             });*/
@@ -280,7 +280,7 @@ module.exports = function(controller) {
             // Check the code property, and when its a PlatformError, log the whole response.
             console.log(error.data);
           }
-        })();
+        }/*)();*/
           /*const http = require("https")
           http.get('https://www.google.com', (res) => {
             console.log(`Got response: ${res.statusCode}`);
@@ -309,7 +309,7 @@ module.exports = function(controller) {
                 //=> 'Internal server error ...'
               }
               })();*/
-          var output_str = "xxx" + japan_rate;
+          var output_str = "日幣匯率:" + japan_rate;
           console.log(output_str);
           await bot.reply(message, output_str);
           working = 0;
