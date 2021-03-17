@@ -241,9 +241,11 @@ module.exports = function(controller) {
           working = 0;
           return;
         }
-        else if (keyword == '日幣' || keyword == '美金'){
+        else if (keyword == '日幣' || keyword == '美金' || keyword == '美元'){
+          if (keyword == '美元')
+            keyword = '美金';
           console.log('dollar rate');
-          var japan_rate = '';
+          var dollar_rate = '';
           const got = require('got');
           
           {
@@ -260,20 +262,25 @@ module.exports = function(controller) {
                   }
                   if (keyword == '日幣')
                     dollar_rate = result[15];
-                  else
+                  else if (keyword == '美金')
+                    dollar_rate = result[1];
             } catch (error) {
               // Check the code property, and when its a PlatformError, log the whole response.
               console.log(error);
             }
           }
-          var output_str = "日幣匯率:" + japan_rate;
+          var output_str = '';
+          if (keyword == '日幣')
+            output_str = "日幣匯率:" + dollar_rate;
+          else if (keyword == '美金')
+            output_str = "美金匯率:" + dollar_rate;
           console.log(output_str);
           await bot.reply(message, output_str);
           working = 0;
           return;
         }
         else if (keyword == '關鍵字列表'){
-          await bot.reply(message, 'momo ㄇㄇ ㄇㄇ列表 ㄇㄎ 52 52列表 社長 社長老婆 血流成河 出處');
+          await bot.reply(message, 'momo ㄇㄇ ㄇㄇ列表 ㄇㄎ 52 52列表 社長 社長老婆 血流成河 出處 日幣 美金');
           working = 0;
           return;
         }
