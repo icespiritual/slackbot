@@ -252,17 +252,30 @@ module.exports = function(controller) {
           // Initialize
           const web = new WebClient(token);*/
           const http = require("https");
+          const got = require('got');
+          
           (async () => {
 
           try {
             // This method call should fail because we're giving it a bogus user ID to lookup.
-            http.get("https://rate.bot.com.tw/xrt?Lang=zh-TW", (res) => { //https://www.google.com'
+            /*http.get("https://rate.bot.com.tw/xrt?Lang=zh-TW", (res) => { //https://www.google.com'
               console.log(`Got response: ${res.statusCode}`);
               // consume response body
-              res.resume();
-            }).on('error', (e) => {
+              res.resume();*/
+            const response = await got("https://rate.bot.com.tw/xrt?Lang=zh-TW");
+                //console.log(response.body);
+                var $ = cheerio.load(response.body);
+                var result = [];
+                var titles = $("td.rate-content-cash.text-right.print_hide");
+                console.log(titles.length);
+                for(var i=0;i<titles.length;i++) {
+                  result.push($(titles[i]).text());
+                }
+                japan_rate = result[15];
+            console.log(typeof(japan_rate));
+            /*}).on('error', (e) => {
               console.log(`Got error: ${e.message}`);
-            });
+            });*/
           } catch (error) {
             // Check the code property, and when its a PlatformError, log the whole response.
             console.log(error.data);
