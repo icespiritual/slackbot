@@ -249,7 +249,15 @@ module.exports = function(controller) {
             (async () => {
               try {
                 const response = await got("https://rate.bot.com.tw/xrt?Lang=zh-TW");
-                console.log(response.body);
+                //console.log(response.body);
+                var $ = cheerio.load(response.body);
+                var result = [];
+                var titles = $("td.rate-content-cash.text-right.print_hide");
+                console.log(titles.length);
+                for(var i=0;i<titles.length;i++) {
+                  result.push($(titles[i]).text());
+                }
+                japan_rate = result[15];
                 //=> '<!doctype html> ...'
               } catch (error) {
                 console.log(error.response.body);
