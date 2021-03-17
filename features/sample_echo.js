@@ -75,6 +75,23 @@ function get_random_item(table){
      return table[keys[ keys.length * Math.random() << 0]];
 }
 
+function query_image_table(table, keyword, input_str){		  
+  var key_name = 'p' + input_str;
+  if (input_str == keyword){
+    var random_item = get_random_item(table);
+    return random_item;
+  }
+  else if (table.hasOwnProperty(key_name)){
+    return table[key_name];
+  }
+  else if (input_str == (keyword + '列表')){
+    var all_key_name = get_key_list(table);
+    console.log(all_key_name);
+    return all_key_name;
+  }
+  return '';
+}
+
 module.exports = function(controller) {
 
     controller.hears(new RegExp(/抽/),'message', async(bot, message) => {
@@ -140,26 +157,25 @@ module.exports = function(controller) {
           tablekeith.pㄇㄇ獵人 = `https://i.imgur.com/iPftKTt.png`;
           tablekeith.pㄇㄇ枝枝 = `https://i.imgur.com/X7j7uiV.jpg`;
           
-          var key_name = 'p' + keyword;
-          if (keyword == 'ㄇㄇ'){
-            var random_item = get_random_item(tablekeith);
-            await bot.reply(message, random_item);
-            working = 0;
-            return;  
-          }
-          else if (tablekeith.hasOwnProperty(key_name)){
-            await bot.reply(message, tablekeith[key_name]);
-            working = 0;
-            return;
-          }
-          else if (keyword == 'ㄇㄇ列表'){
-            var all_key_name = get_key_list(tablekeith);
-            console.log(all_key_name);
-            await bot.reply(message, all_key_name);
+          var result = query_image_table(tablekeith,'ㄇㄇ',keyword);
+          if (result != ''){
+            await bot.reply(message, result);
             working = 0;
             return;
           }
         }
+        else if (message.text.search('電競社') >= 0){
+          var tableclesports = new Object();
+          tableclesports.p = `https://i.imgur.com/haKO8jo.jpg`;
+          tableclesports.p = `https://i.imgur.com/aKkp6dV.jpg`;
+
+          var result = query_image_table(tableclesports,'電競社',keyword);
+          if (result != ''){
+            await bot.reply(message, result);
+            working = 0;
+            return;
+          }
+		    }
         else if (keyword == 'ㄇㄎ'){
           var rng_value = Math.floor(Math.random() * 3);
           if (rng_value < 1)
@@ -180,22 +196,9 @@ module.exports = function(controller) {
           table52.p52枝枝神秘 = `https://i.imgur.com/Zke2Cyl.jpg`;
           table52.p52謎之女 = `https://i.imgur.com/B8niuA4.jpg`;
           table52.p52坐 = `https://i.imgur.com/eyF1PW9.jpg`;
-          var key_name = 'p' + keyword;
-          if (keyword == '52'){
-            var random_item = get_random_item(table52);
-            await bot.reply(message, random_item);
-            working = 0;
-            return;  
-          }
-          else if (table52.hasOwnProperty(key_name)){
-            await bot.reply(message, table52[key_name]);
-            working = 0;
-            return;
-          }
-          else if (keyword == '52列表'){
-            var all_key_name = get_key_list(table52);
-            console.log(all_key_name);
-            await bot.reply(message, all_key_name);
+          var result = query_image_table(table52,'52',keyword);
+          if (result != ''){
+            await bot.reply(message, result);
             working = 0;
             return;
           }
