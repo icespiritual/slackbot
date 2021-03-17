@@ -4,6 +4,7 @@
  */
 var request = require("request");
 var cheerio = require("cheerio");
+const got = require("got");
 var last_query_time = 0;
 var last_keyword = ' ';
 var minutes = 1000 * 60;
@@ -243,27 +244,18 @@ module.exports = function(controller) {
         else if (keyword == '日幣'){
           console.log('japan rate');
           var japan_rate = '';
-          request({
-          url: "https://rate.bot.com.tw/xrt?Lang=zh-TW",
-          method: "GET"
-          }, function(e,r,b) {
-            console.error('error:', e);
-            console.log('statusCode:', r && r.statusCode);
-            if(e || !b) {
-              console.log('get bank html error!');
-              return; }
-            /*var $ = cheerio.load(b);
-            var result = [];
-            var titles = $("td.rate-content-cash.text-right.print_hide");
-            console.log(titles.length);
-            for(var i=0;i<titles.length;i++) {
-              result.push($(titles[i]).text());
-              //console.log(i);
-              //console.log(result[i]);
-            }
-            japan_rate = result[15];
-              console.log(japan_rate);*/
-          });
+            const got = require('got');
+
+            (async () => {
+              try {
+                const response = await got("https://rate.bot.com.tw/xrt?Lang=zh-TW");
+                console.log(response.body);
+                //=> '<!doctype html> ...'
+              } catch (error) {
+                console.log(error.response.body);
+                //=> 'Internal server error ...'
+              }
+              })();
           await bot.reply(message, japan_rate);
           working = 0;
           return;
