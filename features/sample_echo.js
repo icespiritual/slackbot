@@ -244,71 +244,26 @@ module.exports = function(controller) {
         else if (keyword == '日幣'){
           console.log('japan rate');
           var japan_rate = '';
-          /*const { WebClient } = require('@slack/web-api');
-
-          // Read a token from the environment variables
-          const token = process.env.botToken;
-
-          // Initialize
-          const web = new WebClient(token);*/
-          const http = require("https");
           const got = require('got');
           
-          /*(async () => */{
-
-          try {
-            // This method call should fail because we're giving it a bogus user ID to lookup.
-            /*http.get("https://rate.bot.com.tw/xrt?Lang=zh-TW", (res) => { //https://www.google.com'
-              console.log(`Got response: ${res.statusCode}`);
-              // consume response body
-              res.resume();*/
-            const response = await got("https://rate.bot.com.tw/xrt?Lang=zh-TW");
-                //console.log(response.body);
-                var $ = cheerio.load(response.body);
-                var result = [];
-                var titles = $("td.rate-content-cash.text-right.print_hide");
-                //console.log(titles.length);
-                for(var i=0;i<titles.length;i++) {
-                  result.push($(titles[i]).text());
-                }
-                japan_rate = result[15];
-            //console.log(typeof(japan_rate));
-            /*}).on('error', (e) => {
-              console.log(`Got error: ${e.message}`);
-            });*/
-          } catch (error) {
-            // Check the code property, and when its a PlatformError, log the whole response.
-            console.log(error.data);
+          {
+            try {
+              const response = await got("https://rate.bot.com.tw/xrt?Lang=zh-TW");
+                  //console.log(response.body);
+                  var $ = cheerio.load(response.body);
+                  var result = [];
+                  var titles = $("td.rate-content-cash.text-right.print_hide");
+                  //console.log(titles.length);
+                  for(var i=0;i<titles.length;i++) {
+                    result.push($(titles[i]).text());
+                    console.log(titles[i].text());
+                  }
+                  japan_rate = result[15];
+            } catch (error) {
+              // Check the code property, and when its a PlatformError, log the whole response.
+              console.log(error.data);
+            }
           }
-        }/*)();*/
-          /*const http = require("https")
-          http.get('https://www.google.com', (res) => {
-            console.log(`Got response: ${res.statusCode}`);
-            // consume response body
-            res.resume();
-          }).on('error', (e) => {
-            console.log(`Got error: ${e.message}`);
-          });*/
-            /*const got = require('got');
-
-            (async () => {
-              try {
-                const response = await got("https://rate.bot.com.tw/xrt?Lang=zh-TW");
-                //console.log(response.body);
-                var $ = cheerio.load(response.body);
-                var result = [];
-                var titles = $("td.rate-content-cash.text-right.print_hide");
-                console.log(titles.length);
-                for(var i=0;i<titles.length;i++) {
-                  result.push($(titles[i]).text());
-                }
-                japan_rate = result[15];
-                //=> '<!doctype html> ...'
-              } catch (error) {
-                console.log(error.response.body);
-                //=> 'Internal server error ...'
-              }
-              })();*/
           var output_str = "日幣匯率:" + japan_rate;
           console.log(output_str);
           await bot.reply(message, output_str);
