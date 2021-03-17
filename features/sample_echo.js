@@ -166,8 +166,8 @@ module.exports = function(controller) {
         }
         else if (message.text.search('電競社') >= 0){
           var tableclesports = new Object();
-          tableclesports.p = `https://i.imgur.com/haKO8jo.jpg`;
-          tableclesports.p = `https://i.imgur.com/aKkp6dV.jpg`;
+          tableclesports.p乾杯 = `https://i.imgur.com/haKO8jo.jpg`;
+          tableclesports.p全員 = `https://i.imgur.com/aKkp6dV.jpg`;
 
           var result = query_image_table(tableclesports,'電競社',keyword);
           if (result != ''){
@@ -176,17 +176,18 @@ module.exports = function(controller) {
             return;
           }
 		    }
-        else if (keyword == 'ㄇㄎ'){
-          var rng_value = Math.floor(Math.random() * 3);
-          if (rng_value < 1)
-            await bot.reply(message, `https://i.imgur.com/vfVs7xB.jpeg`);
-          if (rng_value < 2)
-            await bot.reply(message, `https://i.imgur.com/VVQiBX3.jpg`);
-          else
-            await bot.reply(message, `https://upload.cc/i1/2021/01/28/pv1oqH.gif`);
+        else if (message.text.search('ㄇㄎ') >= 0){
+          var tablemike = new Object();
+          tablemike.p駁二 = `https://i.imgur.com/vfVs7xB.jpeg`;
+          tablemike.p火災 = `https://i.imgur.com/VVQiBX3.jpg`;
+		      tablemike.p讚 = `https://upload.cc/i1/2021/01/28/pv1oqH.gif`;
           
-          working = 0;
-          return;
+          var result = query_image_table(tablemike,'ㄇㄎ',keyword);
+          if (result != ''){
+            await bot.reply(message, result);
+            working = 0;
+            return;
+          }
         }
         else if (message.text.search('52') >= 0){
           var table52 = new Object();
@@ -203,18 +204,18 @@ module.exports = function(controller) {
             return;
           }
         }
-        else if (keyword == '社長'){
-          var rng_value = Math.floor(Math.random() * 4);
-          if (rng_value < 1)
-            await bot.reply(message, `https://i.imgur.com/uhsrpJQ.png`);
-          else if (rng_value < 2)
-            await bot.reply(message, `https://i.imgur.com/jkDFnmt.jpg`);
-          else if (rng_value < 3)
-            await bot.reply(message, `https://i.imgur.com/6O8Xerj.jpg`);
-          else
-            await bot.reply(message, `https://i.imgur.com/nze0LHp.jpg`);
-          working = 0;
-          return;
+        else if (message.text.search('社長') >= 0){
+          var tablecheya = new Object();
+            tablecheya.p持久 = `https://i.imgur.com/uhsrpJQ.png`;
+            tablecheya.p雙女 = `https://i.imgur.com/jkDFnmt.jpg`;
+            tablecheya.p剝蝦 = `https://i.imgur.com/6O8Xerj.jpg`;
+            tablecheya.p拉克絲 = `https://i.imgur.com/nze0LHp.jpg`;
+          var result = query_image_table(tablecheya,'社長',keyword);
+          if (result != ''){
+            await bot.reply(message, result);
+            working = 0;
+            return;
+          }
         }
         else if (keyword == '社長老婆'){
           console.log('社長老婆!')
@@ -283,7 +284,7 @@ module.exports = function(controller) {
           return;
         }
         else if (keyword == '關鍵字列表'){
-          await bot.reply(message, 'momo ㄇㄇ ㄇㄇ列表 ㄇㄎ 52 52列表 社長 社長老婆 血流成河 出處 日幣 美金');
+          await bot.reply(message, 'momo ㄇㄇ ㄇㄎ 52 社長 人名+列表 社長老婆 血流成河 出處 日幣 美金');
           working = 0;
           return;
         }
