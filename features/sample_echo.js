@@ -309,7 +309,9 @@ module.exports = function(controller) {
                 //=> 'Internal server error ...'
               }
               })();*/
-          await bot.reply(message, "xxx" + japan_rate);
+          var output_str = "xxx" + japan_rate;
+          console.log(output_str);
+          await bot.reply(message, output_str);
           working = 0;
           return;
         }
