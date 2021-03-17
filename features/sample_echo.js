@@ -244,7 +244,15 @@ module.exports = function(controller) {
         else if (keyword == '日幣'){
           console.log('japan rate');
           var japan_rate = '';
-            const got = require('got');
+          const http = require("https")
+          http.get('https://www.google.com', (res) => {
+            console.log(`Got response: ${res.statusCode}`);
+            // consume response body
+            res.resume();
+          }).on('error', (e) => {
+            console.log(`Got error: ${e.message}`);
+          });
+            /*const got = require('got');
 
             (async () => {
               try {
@@ -263,7 +271,7 @@ module.exports = function(controller) {
                 console.log(error.response.body);
                 //=> 'Internal server error ...'
               }
-              })();
+              })();*/
           await bot.reply(message, japan_rate);
           working = 0;
           return;
