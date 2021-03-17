@@ -241,8 +241,8 @@ module.exports = function(controller) {
           working = 0;
           return;
         }
-        else if (keyword == '日幣'){
-          console.log('japan rate');
+        else if (keyword == '日幣' || keyword == '美金'){
+          console.log('dollar rate');
           var japan_rate = '';
           const got = require('got');
           
@@ -256,12 +256,14 @@ module.exports = function(controller) {
                   //console.log(titles.length);
                   for(var i=0;i<titles.length;i++) {
                     result.push($(titles[i]).text());
-                    console.log(titles[i].text());
+                    //console.log(result[i]);
                   }
-                  japan_rate = result[15];
+                  if (keyword == '日幣')
+                    dollar_rate = result[15];
+                  else
             } catch (error) {
               // Check the code property, and when its a PlatformError, log the whole response.
-              console.log(error.data);
+              console.log(error);
             }
           }
           var output_str = "日幣匯率:" + japan_rate;
