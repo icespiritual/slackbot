@@ -5,25 +5,26 @@
 const { SlackDialog } = require('botbuilder-adapter-slack');
 
 var game = new Object();
+var game_start = false;
 var cur_handler = main_menu;
 var cur_display = '眾多冒險者都想探索這座迷宮...';
 function main_menu(input){
   if (input == 1){
     cur_handler = village;
-    return '1:進入迷宮 2:商店 3:旅館';
+    cur_display = '1:進入迷宮 2:商店 3:旅館';
   }
 }
 
 function village(input){
   if (input == 1){
     cur_handler = dungeon;
-    return '你進入了迷宮...'
+    cur_display = '你進入了迷宮...'
   }
 }
 
 function dungeon(input){
   if (input == 1){
-    cur_handler = dungeon;
+    cur_display = 'haha';
   }
 }
 
@@ -38,8 +39,16 @@ module.exports = function(controller) {
     });
 
     controller.on('direct_message', async(bot, message) => {
-        await bot.reply(message,'I heard a private message');
-        await bot.reply(message,`1:開始遊戲 2:載入進度`);
+        if (game_start){
+          cur_handler(message.text);
+          await bot.reply(message,cur_display);
+        }
+        else
+        {
+          await bot.reply(message,'眾多冒險者都想探索這座迷宮...');
+          await bot.reply(message,`1:開始遊戲 2:載入進度`);
+        }
+        game_start = true;
     });
 
     controller.hears('dm me', 'message', async(bot, message) => {
