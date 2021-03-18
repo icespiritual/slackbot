@@ -20,7 +20,7 @@ module.exports = function(controller) {
 
     controller.hears('dm me', 'message', async(bot, message) => {
         await bot.startPrivateConversation(message.user);
-        await bot.say(`Let's talk in private.`);
+        await bot.say(`1:開始遊戲 2:載入進度`);
     });
 
     controller.on('direct_mention', async(bot, message) => {
