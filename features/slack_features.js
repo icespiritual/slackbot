@@ -8,6 +8,8 @@ var game = new Object();
 var game_start = false;
 var cur_handler = main_menu;
 var cur_display = '眾多冒險者都想探索這座迷宮... \n 1:開始遊戲 2:載入進度';
+var blackline = ':black_square::black_square::black_square::black_square::black_square:\n';
+var dungeon_map = blackline + blackline + blackline + blackline + blackline;
 function main_menu(input){
   if (input == 1){
     cur_handler = village;
@@ -24,7 +26,7 @@ function village(input){
 
 function dungeon(input){
   if (input == 1){
-    cur_display = 'haha';
+    cur_display = dungeon_map;
   }
   if (input == 2){
     cur_handler = main_menu;
