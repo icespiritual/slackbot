@@ -5,6 +5,27 @@
 const { SlackDialog } = require('botbuilder-adapter-slack');
 
 var game = new Object();
+var cur_handler = main_menu;
+var cur_display = '眾多冒險者都想探索這座迷宮...';
+function main_menu(input){
+  if (input == 1){
+    cur_handler = village;
+    return '1:進入迷宮 2:商店 3:旅館';
+  }
+}
+
+function village(input){
+  if (input == 1){
+    cur_handler = dungeon;
+    return '你進入了迷宮...'
+  }
+}
+
+function dungeon(input){
+  if (input == 1){
+    cur_handler = dungeon;
+  }
+}
 
 module.exports = function(controller) {
 
