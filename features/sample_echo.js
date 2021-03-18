@@ -161,6 +161,18 @@ module.exports = function(controller) {
             keyword = 'sakura momo'
           }
         }
+        else if (keyword == '摸摸愛'){
+          var tablemomolove = new Object();
+          tablemomolove.p = '文詠珊';
+          tablemomolove.p = '春夏';
+          tablemomolove.p = '采翎';
+			    tablemomolove.p = 'Lauren Lapkus';
+			    tablemomolove.p = 'Hannah Emily Anderson';
+          var result = get_random_item(tablemomolove);
+          if (result != ''){
+            keyword = result;
+          }
+        }
         else if (message.text.search('ㄇㄇ') >= 0){
           var tablekeith = new Object();
           tablekeith.pㄇㄇ貓 = `https://i.imgur.com/Adp22A2.jpg`;
@@ -295,7 +307,7 @@ module.exports = function(controller) {
           return;
         }
         else if (keyword == '關鍵字列表'){
-          await bot.reply(message, 'momo ㄇㄇ ㄇㄎ 52 社長 人名+列表 社長老婆 血流成河 出處 日幣 美金');
+          await bot.reply(message, 'momo 摸摸愛 ㄇㄇ ㄇㄎ 52 社長 人名+列表 社長老婆 血流成河 出處 日幣 美金');
           working = 0;
           return;
         }
