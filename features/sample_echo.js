@@ -148,7 +148,18 @@ module.exports = function(controller) {
           return;
         }
         else if (keyword == 'momo'){
-          keyword = 'Sakura Momo';
+          var tablemomo = new Object();
+          tablemomo.pMarine = `宝鐘マリン`;
+          tablemomo.pSubaru = `大空スバル`;
+          tablemomo.pKiara = `Takanashi Kiara`;
+          var result = get_random_item(tablemomo);
+          if (result != ''){
+            keyword = result;
+          }
+          else
+          {
+            keyword = 'sakura momo'
+          }
         }
         else if (message.text.search('ㄇㄇ') >= 0){
           var tablekeith = new Object();
