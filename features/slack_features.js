@@ -26,6 +26,10 @@ function dungeon(input){
   if (input == 1){
     cur_display = 'haha';
   }
+  if (input == 2){
+    cur_handler = main_menu;
+    cur_display = '眾多冒險者都想探索這座迷宮... \n 1:開始遊戲 2:載入進度';
+  }
 }
 
 module.exports = function(controller) {
