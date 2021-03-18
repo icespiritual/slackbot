@@ -166,8 +166,8 @@ module.exports = function(controller) {
         }
         else if (message.text.search('電競社') >= 0){
           var tableclesports = new Object();
-          tableclesports.p乾杯 = `https://i.imgur.com/haKO8jo.jpg`;
-          tableclesports.p全員 = `https://i.imgur.com/aKkp6dV.jpg`;
+          tableclesports.p電競社乾杯 = `https://i.imgur.com/haKO8jo.jpg`;
+          tableclesports.p電競社全員 = `https://i.imgur.com/aKkp6dV.jpg`;
 
           var result = query_image_table(tableclesports,'電競社',keyword);
           if (result != ''){
@@ -178,9 +178,9 @@ module.exports = function(controller) {
 		    }
         else if (message.text.search('ㄇㄎ') >= 0){
           var tablemike = new Object();
-          tablemike.p駁二 = `https://i.imgur.com/vfVs7xB.jpeg`;
-          tablemike.p火災 = `https://i.imgur.com/VVQiBX3.jpg`;
-		      tablemike.p讚 = `https://upload.cc/i1/2021/01/28/pv1oqH.gif`;
+          tablemike.pㄇㄎ駁二 = `https://i.imgur.com/vfVs7xB.jpeg`;
+          tablemike.pㄇㄎ火災 = `https://i.imgur.com/VVQiBX3.jpg`;
+		      tablemike.pㄇㄎ讚 = `https://upload.cc/i1/2021/01/28/pv1oqH.gif`;
           
           var result = query_image_table(tablemike,'ㄇㄎ',keyword);
           if (result != ''){
@@ -206,10 +206,10 @@ module.exports = function(controller) {
         }
         else if (message.text.search('社長') >= 0){
           var tablecheya = new Object();
-            tablecheya.p持久 = `https://i.imgur.com/uhsrpJQ.png`;
-            tablecheya.p雙女 = `https://i.imgur.com/jkDFnmt.jpg`;
-            tablecheya.p剝蝦 = `https://i.imgur.com/6O8Xerj.jpg`;
-            tablecheya.p拉克絲 = `https://i.imgur.com/nze0LHp.jpg`;
+            tablecheya.p社長持久 = `https://i.imgur.com/uhsrpJQ.png`;
+            tablecheya.p社長雙女 = `https://i.imgur.com/jkDFnmt.jpg`;
+            tablecheya.p社長剝蝦 = `https://i.imgur.com/6O8Xerj.jpg`;
+            tablecheya.p社長拉克絲 = `https://i.imgur.com/nze0LHp.jpg`;
           var result = query_image_table(tablecheya,'社長',keyword);
           if (result != ''){
             await bot.reply(message, result);
