@@ -204,19 +204,6 @@ module.exports = function(controller) {
             return;
           }
         }
-        else if (message.text.search('社長') >= 0){
-          var tablecheya = new Object();
-            tablecheya.p社長持久 = `https://i.imgur.com/uhsrpJQ.png`;
-            tablecheya.p社長雙女 = `https://i.imgur.com/jkDFnmt.jpg`;
-            tablecheya.p社長剝蝦 = `https://i.imgur.com/6O8Xerj.jpg`;
-            tablecheya.p社長拉克絲 = `https://i.imgur.com/nze0LHp.jpg`;
-          var result = query_image_table(tablecheya,'社長',keyword);
-          if (result != ''){
-            await bot.reply(message, result);
-            working = 0;
-            return;
-          }
-        }
         else if (keyword == '社長老婆'){
           console.log('社長老婆!')
           var rng_value = Math.floor(Math.random() * 10);
@@ -233,6 +220,19 @@ module.exports = function(controller) {
           }
           else
             keyword = '曾智希';
+        }
+        else if (message.text.search('社長') >= 0){
+          var tablecheya = new Object();
+            tablecheya.p社長持久 = `https://i.imgur.com/uhsrpJQ.png`;
+            tablecheya.p社長雙女 = `https://i.imgur.com/jkDFnmt.jpg`;
+            tablecheya.p社長剝蝦 = `https://i.imgur.com/6O8Xerj.jpg`;
+            tablecheya.p社長拉克絲 = `https://i.imgur.com/nze0LHp.jpg`;
+          var result = query_image_table(tablecheya,'社長',keyword);
+          if (result != ''){
+            await bot.reply(message, result);
+            working = 0;
+            return;
+          }
         }
         else if (keyword == '血流成河'){
           await bot.reply(message, `https://i.imgur.com/FrfHotj.jpg`);
