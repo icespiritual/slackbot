@@ -7,7 +7,7 @@ const { SlackDialog } = require('botbuilder-adapter-slack');
 var game = new Object();
 var game_start = false;
 var cur_handler = main_menu;
-var cur_display = '眾多冒險者都想探索這座迷宮...';
+var cur_display = '眾多冒險者都想探索這座迷宮... \n 1:開始遊戲 2:載入進度';
 function main_menu(input){
   if (input == 1){
     cur_handler = village;
@@ -18,7 +18,7 @@ function main_menu(input){
 function village(input){
   if (input == 1){
     cur_handler = dungeon;
-    cur_display = '你進入了迷宮...'
+    cur_display = '你進入了迷宮... \n 1. 戰鬥 2. 去死'
   }
 }
 
@@ -45,8 +45,7 @@ module.exports = function(controller) {
         }
         else
         {
-          await bot.reply(message,'眾多冒險者都想探索這座迷宮...');
-          await bot.reply(message,`1:開始遊戲 2:載入進度`);
+          await bot.reply(message,cur_display);
         }
         game_start = true;
     });
