@@ -9,14 +9,23 @@ var game_start = false;
 var cur_handler = main_menu;
 var cur_display = '眾多冒險者都想探索這座迷宮... \n 1:開始遊戲 2:載入進度';
 var blackline = ':black_square::black_square::black_square::black_square::black_square:\n';
-var dungeonmap = [[1,1,0,1,1],
+var dungeon_map = [[1,1,0,1,1],
                  [1,1,0,1,1],
                  [1,0,0,1,1],
                  [1,1,0,1,1],
                  [1,1,0,1,1]];
 var dungeon_map_show = blackline + blackline + blackline + blackline + blackline;
 function generate_dungeon_map_show(dun_map){
-  
+  dungeon_map_show = '';
+  for (var j=0;j<5;j++){
+    for (var i=0;i<5;i++){
+      if (dun_map[j][i] == 1)
+        dungeon_map_show += ':black_square:';
+      else
+        dungeon_map_show += ':white_square:';
+    }
+    dungeon_map_show += '\n';
+  }
 }
 
 function main_menu(input){
@@ -35,6 +44,7 @@ function village(input){
 
 function dungeon(input){
   if (input == 1){
+    generate_dungeon_map_show(dungeon_map);
     cur_display = dungeon_map_show;
   }
   if (input == 2){
