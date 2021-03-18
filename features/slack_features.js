@@ -4,6 +4,8 @@
  */
 const { SlackDialog } = require('botbuilder-adapter-slack');
 
+var game = new Object();
+
 module.exports = function(controller) {
 
     controller.ready(async () => {
@@ -16,6 +18,7 @@ module.exports = function(controller) {
 
     controller.on('direct_message', async(bot, message) => {
         await bot.reply(message,'I heard a private message');
+        await bot.reply(message,`1:開始遊戲 2:載入進度`);
     });
 
     controller.hears('dm me', 'message', async(bot, message) => {
