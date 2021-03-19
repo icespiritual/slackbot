@@ -61,8 +61,14 @@ function compose_final_map(dungeon_map, myhero, final_result){
       final_result[j][i] = dungeon_map[j][i];
     }
   }
+  console.log('myhero:');
+  console.log(myhero);
   if (myhero.x >= 0 && myhero.x < dungeon.width && myhero.y >= 0 && myhero.y < dungeon.height){
     final_result[myhero.y][myhero.x] = 2; // 2 is hero
+    console.log('actual move');
+  }
+  else{
+    console.log();
   }
   console.log(final_result);
 }
@@ -94,9 +100,9 @@ function dungeon(input){
     move_hero(hero, input, dungeon_width, dungeon_height);
     console.log(hero.x, hero.y);
   }
-  console.log('final map before:\n' + final_map);
+  console.log(final_map);
   compose_final_map(dungeon_map, hero, final_map);
-  console.log('final map after:\n' + final_map);
+  console.log(final_map);
   generate_dungeon_map_show(final_map);
   cur_display = dungeon_map_show + 'w:上, a:左 s:下 d:右';
 }
