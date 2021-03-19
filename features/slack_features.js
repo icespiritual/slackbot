@@ -36,7 +36,10 @@ function generate_dungeon_map_show(dun_map){
 var hero = new Object();
 hero.x = 2;
 hero.y = 0;
-function move_hero(hero, )
+function move_hero(myhero, input, width, height){
+  if (input == w)
+  myhero.x = 3;
+}
 
 function main_menu(input){
   if (input == 1){
@@ -60,6 +63,10 @@ function dungeon(input){
   if (input == 2){
     cur_handler = main_menu;
     cur_display = '眾多冒險者都想探索這座迷宮... \n 1:開始遊戲 2:載入進度';
+  }
+  else{
+    move_hero(hero);
+    console.log(hero.x);
   }
 }
 
