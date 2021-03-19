@@ -36,9 +36,9 @@ function generate_dungeon_map_show(dun_map){
 var hero = new Object();
 hero.x = 2;
 hero.y = 0;
-function move_hero(myhero, input, width, height){
+function move_hero(myhero, input, dun_map, width, height){
   if (input == 'w'){
-    if (myhero.y < height - 1)
+    if (myhero.y < height - 1 && dun_map[height - myhero.y+1][myhero.x] == 0)
       myhero.y += 1;
   }
   else if (input == 'a'){
@@ -63,15 +63,15 @@ function compose_final_map(dungeon_map, myhero, final_result){
   }
   console.log('myhero:');
   console.log(myhero);
-  console.log(myhero.x >= 0 , myhero.x < dungeon.width, myhero.y >= 0, myhero.y < dungeon.height);
-  if (myhero.x >= 0 && myhero.x < dungeon.width && myhero.y >= 0 && myhero.y < dungeon.height){
-    final_result[myhero.y][myhero.x] = 2; // 2 is hero
+  //console.log(myhero.x >= 0 , myhero.x < dungeon_width, myhero.y >= 0, myhero.y < dungeon_height);
+  if (myhero.x >= 0 && myhero.x < dungeon_width && myhero.y >= 0 && myhero.y < dungeon_height){
+    final_result[dungeon_height - myhero.y - 1][myhero.x] = 2; // 2 is hero
     console.log('actual move');
   }
   else{
     console.log('not move');
   }
-  console.log(final_result);
+  //console.log(final_result);
 }
 
 function main_menu(input){
@@ -84,14 +84,13 @@ function main_menu(input){
 function village(input){
   if (input == 1){
     cur_handler = dungeon;
-    cur_display = '你進入了迷宮... \n 1. 戰鬥 2. 去死'
+    cur_display = '你進入了迷宮... \n 1. 確定 2. 重來'
   }
 }
 
 function dungeon(input){
   if (input == 1){
-    generate_dungeon_map_show(dungeon_map);
-    cur_display = dungeon_map_show + 'w:上, a:左 s:下 d:右';
+    // do nothing
   }
   if (input == 2){
     cur_handler = main_menu;
@@ -101,9 +100,9 @@ function dungeon(input){
     move_hero(hero, input, dungeon_width, dungeon_height);
     console.log(hero.x, hero.y);
   }
-  console.log(final_map);
+  //console.log(final_map);
   compose_final_map(dungeon_map, hero, final_map);
-  console.log(final_map);
+  //console.log(final_map);
   generate_dungeon_map_show(final_map);
   cur_display = dungeon_map_show + 'w:上, a:左 s:下 d:右';
 }
