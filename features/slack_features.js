@@ -64,6 +64,7 @@ function compose_final_map(dungeon_map, myhero, final_result){
   if (myhero.x >= 0 && myhero.x < dungeon.width && myhero.y >= 0 && myhero.y < dungeon.height){
     final_result[myhero.y][myhero.x] = 2; // 2 is hero
   }
+  console.log(final_result);
 }
 
 function main_menu(input){
@@ -90,10 +91,13 @@ function dungeon(input){
     cur_display = '眾多冒險者都想探索這座迷宮... \n 1:開始遊戲 2:載入進度';
   }
   else{
-    move_hero(hero);
-    console.log(hero.x);
+    move_hero(hero, input, dungeon_width, dungeon_height);
+    console.log(hero.x, hero.y);
   }
-  compose_final_map()l
+  compose_final_map(dungeon_map, hero, final_map);
+  console.log('final map:\n' + final_map);
+  generate_dungeon_map_show(final_map);
+  cur_display = dungeon_map_show + 'w:上, a:左 s:下 d:右';
 }
 
 module.exports = function(controller) {
