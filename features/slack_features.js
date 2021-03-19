@@ -63,12 +63,13 @@ function compose_final_map(dungeon_map, myhero, final_result){
   }
   console.log('myhero:');
   console.log(myhero);
+  console.log(myhero.x >= 0 , myhero.x < dungeon.width, myhero.y >= 0, myhero.y < dungeon.height);
   if (myhero.x >= 0 && myhero.x < dungeon.width && myhero.y >= 0 && myhero.y < dungeon.height){
     final_result[myhero.y][myhero.x] = 2; // 2 is hero
     console.log('actual move');
   }
   else{
-    console.log();
+    console.log('not move');
   }
   console.log(final_result);
 }
