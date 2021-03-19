@@ -94,8 +94,9 @@ function dungeon(input){
     move_hero(hero, input, dungeon_width, dungeon_height);
     console.log(hero.x, hero.y);
   }
+  console.log('final map before:\n' + final_map);
   compose_final_map(dungeon_map, hero, final_map);
-  console.log('final map:\n' + final_map);
+  console.log('final map after:\n' + final_map);
   generate_dungeon_map_show(final_map);
   cur_display = dungeon_map_show + 'w:上, a:左 s:下 d:右';
 }
