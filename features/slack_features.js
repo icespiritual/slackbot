@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 const { SlackDialog } = require('botbuilder-adapter-slack');
-
+var player_list = new Object();
 var game = new Object();
 var game_start = false;
 var cur_handler = main_menu;
@@ -62,15 +62,24 @@ module.exports = function(controller) {
     });
 
     controller.on('direct_message', async(bot, message) => {
-        if (game_start){
-          cur_handler(message.text);
-          await bot.reply(message,cur_display);
+      if (message.text == 'momoquest'){
+        console.log(message.incoming_message.channelData.user.id);
+        if (player_list.hasOwnProperty(message.incoming_message.channelData.user.id)){
+          await bot.reply(message,'已經開始遊戲囉');
         }
-        else
-        {
-          await bot.reply(message,cur_display);
+        else{
+          player_list[message.incoming_message.channelData.user.id] = new Object();
+          game_start = true;
         }
-        game_start = true;
+      }
+      else if (game_start){
+        cur_handler(message.text);
+        await bot.reply(message,cur_display);
+      }
+      else
+      {
+        await bot.reply(message,'未開始遊戲');
+      }
     });
 
     controller.hears('dm me', 'message', async(bot, message) => {
