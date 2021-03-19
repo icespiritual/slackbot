@@ -25,8 +25,8 @@ var final_map = [[1,1,0,1,1],
 var dungeon_map_show = blackline + blackline + blackline + blackline + blackline;
 function generate_dungeon_map_show(dun_map){
   dungeon_map_show = '';
-  for (var j=0;j<5;j++){
-    for (var i=0;i<5;i++){
+  for (var j=0;j<dungeon_height;j++){
+    for (var i=0;i<dungeon_width;i++){
         dungeon_map_show += emoji_table[dun_map[j][i]];
     }
     dungeon_map_show += '\n';
@@ -37,8 +37,33 @@ var hero = new Object();
 hero.x = 2;
 hero.y = 0;
 function move_hero(myhero, input, width, height){
-  if (input == w)
-  myhero.x = 3;
+  if (input == 'w'){
+    if (myhero.y < height - 1)
+      myhero.y += 1;
+  }
+  else if (input == 'a'){
+    if (myhero.x > 0)
+      myhero.x -= 1;
+  }
+  else if (input == 's'){
+    if (myhero.y > 0)
+      myhero.y -= 1;
+  }
+  if (input == 'd'){
+    if (myhero.x < width - 1)
+      myhero.x += 1;
+  }  
+}
+
+function compose_final_map(dungeon_map, myhero, final_result){
+  for (var j=0;j<dungeon_height;j++){
+    for (var i=0;i<dungeon_width;i++){
+      final_result[j][i] = dungeon_map[j][i];
+    }
+  }
+  if (myhero.x >= 0 && myhero.x < dungeon.width && myhero.y >= 0 && myhero.y < dungeon.height){
+    final_result[myhero.y][myhero.x] = 2; // 2 is hero
+  }
 }
 
 function main_menu(input){
@@ -68,6 +93,7 @@ function dungeon(input){
     move_hero(hero);
     console.log(hero.x);
   }
+  compose_final_map()l
 }
 
 module.exports = function(controller) {
