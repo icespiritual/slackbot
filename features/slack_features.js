@@ -38,19 +38,19 @@ hero.x = 2;
 hero.y = 0;
 function move_hero(myhero, input, dun_map, width, height){
   if (input == 'w'){
-    if (myhero.y < height - 1 && dun_map[height - myhero.y+1][myhero.x] == 0)
+    if (myhero.y < height - 1 && dun_map[height - myhero.y - 2][myhero.x] == 0)
       myhero.y += 1;
   }
   else if (input == 'a'){
-    if (myhero.x > 0)
+    if (myhero.x > 0  && dun_map[height - myhero.y - 1][myhero.x - 1] == 0)
       myhero.x -= 1;
   }
   else if (input == 's'){
-    if (myhero.y > 0)
+    if (myhero.y > 0  && dun_map[height - myhero.y][myhero.x] == 0)
       myhero.y -= 1;
   }
   if (input == 'd'){
-    if (myhero.x < width - 1)
+    if (myhero.x < width - 1 && dun_map[height - myhero.y - 1][myhero.x + 1] == 0)
       myhero.x += 1;
   }  
 }
@@ -97,7 +97,7 @@ function dungeon(input){
     cur_display = '眾多冒險者都想探索這座迷宮... \n 1:開始遊戲 2:載入進度';
   }
   else{
-    move_hero(hero, input, dungeon_width, dungeon_height);
+    move_hero(hero, input, dungeon_map, dungeon_width, dungeon_height);
     console.log(hero.x, hero.y);
   }
   //console.log(final_map);
