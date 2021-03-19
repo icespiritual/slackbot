@@ -14,7 +14,14 @@ var dungeon_map = [[1,1,0,1,1],
                  [1,1,0,1,1],
                  [1,0,0,1,1],
                  [1,1,0,1,1],
-                 [1,1,2,1,1]];
+                 [1,1,0,1,1]];
+var dungeon_height = dungeon_map.length;
+var dungeon_width = dungeon_map[0].length;
+var final_map = [[1,1,0,1,1],
+                 [1,1,0,1,1],
+                 [1,0,0,1,1],
+                 [1,1,0,1,1],
+                 [1,1,0,1,1]];  // with hero/monsters/...
 var dungeon_map_show = blackline + blackline + blackline + blackline + blackline;
 function generate_dungeon_map_show(dun_map){
   dungeon_map_show = '';
@@ -25,6 +32,11 @@ function generate_dungeon_map_show(dun_map){
     dungeon_map_show += '\n';
   }
 }
+
+var hero = new Object();
+hero.x = 2;
+hero.y = 0;
+function move_hero(hero, )
 
 function main_menu(input){
   if (input == 1){
