@@ -43,7 +43,7 @@ function village(input){
 function dungeon(input){
   if (input == 1){
     generate_dungeon_map_show(dungeon_map);
-    cur_display = dungeon_map_show;
+    cur_display = dungeon_map_show + 'w:上, a:左 s:下 d:右';
   }
   if (input == 2){
     cur_handler = main_menu;
