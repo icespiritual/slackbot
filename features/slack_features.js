@@ -63,13 +63,15 @@ module.exports = function(controller) {
 
     controller.on('direct_message', async(bot, message) => {
       if (message.text == 'momoquest'){
-        console.log(message.incoming_message.channelData.user.id);
-        if (player_list.hasOwnProperty(message.incoming_message.channelData.user.id)){
+        console.log(message.user);
+        if (player_list.hasOwnProperty(message.user)){
           await bot.reply(message,'已經開始遊戲囉');
         }
         else{
-          player_list[message.incoming_message.channelData.user.id] = new Object();
+          player_list[message.user] = new Object();
           game_start = true;
+          cur_handler(message.text);
+          await bot.reply(message,cur_display);
         }
       }
       else if (game_start){
