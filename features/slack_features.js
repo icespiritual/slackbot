@@ -112,6 +112,7 @@ function dungeon_move(input){
     // random? pick a room
     bBattle = true;
     cur_mon = Object.assign({}, mon_ant);
+    console.log('picked a room');
   }
   else if (input == 2){
     cur_handler = main_menu;
@@ -121,7 +122,7 @@ function dungeon_move(input){
     cur_handler = dungeon_battle;
     cur_display = dungeon_map_show + '開始戰鬥! 1:技能1 2:技能2\n';
     //move_hero(hero, input, dungeon_map, dungeon_width, dungeon_height);
-    //console.log(hero.x, hero.y);
+    console.log('start battle');
   }
   //console.log(final_map);
   console.log("cur mon id:" + cur_mon.id);
