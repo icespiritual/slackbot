@@ -84,8 +84,8 @@ function compose_final_map(dungeon_map, myhero, enemy, final_result){
   }
   if (enemy != null){
     final_result[3][2] = enemy.id; // 3/2 should change to enemy position variables?
-    console.log("enemy id:" + enemy.id);
-    console.log(typeof  enemy.id);
+    //console.log("enemy id:" + enemy.id);
+    //console.log(typeof  enemy.id);
     // draw mon
   }
   //console.log(final_result);
@@ -107,6 +107,7 @@ function village(input){
 
 function dungeon_move(input){
   var bBattle = false;
+  console.log("deungeon_move input:" + input);
   if (input == 1){ // enter room
     // random? pick a room
     bBattle = true;
