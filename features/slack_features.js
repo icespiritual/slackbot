@@ -14,7 +14,7 @@ emoji_table[0] = ':white_square:';//[':white_square:',':black_square:',':white_h
 emoji_table[1] = ':black_square:';
 emoji_table[2] = ':door:';
 emoji_table[100] = ':white_haired_woman:'; // hero start from 100
-emoji_table[100] = ':ant:'; // monsters start from 200
+emoji_table[200] = ':ant:'; // monsters start from 200
 var dungeon_map = [[2,1,1,1,2],
                  [0,0,1,0,0],
                  [1,0,0,0,1],
@@ -84,6 +84,8 @@ function compose_final_map(dungeon_map, myhero, enemy, final_result){
   }
   if (enemy != null){
     final_result[3][2] = enemy.id; // 3/2 should change to enemy position variables?
+    console.log("enemy id:" + enemy.id);
+    console.log(typeof  enemy.id);
     // draw mon
   }
   //console.log(final_result);
@@ -121,6 +123,7 @@ function dungeon_move(input){
     //console.log(hero.x, hero.y);
   }
   //console.log(final_map);
+  console.log("cur mon id:" + cur_mon.id);
   compose_final_map(dungeon_map, hero, cur_mon, final_map);
   //console.log(final_map);
   generate_dungeon_map_show(final_map);
