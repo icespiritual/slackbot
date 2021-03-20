@@ -9,8 +9,12 @@ var game_start = false;
 var cur_handler = main_menu;
 var cur_display = '眾多冒險者都想探索這座迷宮... \n 1:開始遊戲 2:載入進度';
 var blackline = ':black_square::black_square::black_square::black_square::black_square:\n';
-var emoji_table = [':white_square:',':black_square:',':white_haired_woman:'];
-var dungeon_map = [[0,1,1,1,0],
+var emoji_table = new Object();
+emoji_table[0] = ':white_square:';//[':white_square:',':black_square:',':white_haired_woman:'];
+emoji_table[1] = ':black_square:';
+emoji_table[2] = ':door:';
+emoji_table[100] = ':white_haired_woman:';
+var dungeon_map = [[2,1,1,1,2],
                  [0,0,0,0,0],
                  [1,0,0,0,1],
                  [1,0,0,0,1],
@@ -65,7 +69,7 @@ function compose_final_map(dungeon_map, myhero, final_result){
   console.log(myhero);
   //console.log(myhero.x >= 0 , myhero.x < dungeon_width, myhero.y >= 0, myhero.y < dungeon_height);
   if (myhero.x >= 0 && myhero.x < dungeon_width && myhero.y >= 0 && myhero.y < dungeon_height){
-    final_result[dungeon_height - myhero.y - 1][myhero.x] = 2; // 2 is hero
+    final_result[dungeon_height - myhero.y - 1][myhero.x] = 100; // 100 is hero
     console.log('actual move');
   }
   else{
