@@ -31,7 +31,7 @@ var final_map = [[1,1,0,1,1],
                  [1,1,0,1,1]];  // with hero/monsters/...
 var dungeon_map_show = blackline + blackline + blackline + blackline + blackline;
 // monster data
-var mon_ant = {'id':200, 'hp':10, 'mp':0, 'atk':5, 'def':3,'agi':3, 'mat':0, 'mdef':0};
+var mon_ant = {'name':'螞蟻', 'id':200, 'hp':10, 'mp':0, 'atk':5, 'def':3,'agi':3, 'mat':0, 'mdef':0};
 var cur_mon = null;
 
 function generate_dungeon_map_show(dun_map){
@@ -89,8 +89,37 @@ function compose_final_map(dungeon_map, myhero, enemy, final_result){
   //console.log(final_result);
 }
 
-function attack(myhero, enemy, xxx){
-  
+function normalAttack(hero_status, enemy_status, myhero, enemy){
+	var damage_value = hero_status.atk - enemy_status.def;
+	if (damage_value >= enemy.hp){
+    damage_value = enemy.hp;
+		enemy.hp = 0;
+	}
+	else{
+		enemy.hp -= damage_value;
+	}
+  console.log('atk:' + hero_status.atk + ' def:' + enemy_status.def + ' damage:' + damage_value);
+	return damage_value;
+}
+
+function useSkill(myhero, enemy, skill){
+	// there should be passive skill list and current active skill on both myhero and enemy
+	var hero_status = Object.assign({}, myhero);
+	var enemy_status = Object.assign({}, enemy);
+	// apply hero's pre attack passive list
+	// apply enemy's pre defend passive list
+	// to check if is physical or magical
+	// to check if it is heal or attack
+	var damage_value = skill(hero_status, enemy_status, myhero, enemy);
+	var bkilled = false;
+	if (enemy.hp <= 0){
+		bkilled = true;
+	}
+	else{
+	// apply hero's post attack passive list
+	// apply enemy's post defend passive list
+	}
+	return damage_value;
 }
 
 function main_menu(input){
@@ -144,7 +173,10 @@ function dungeon_battle(input){
   var base_msg = '1:技能1 2:技能2\n';
   if (input == 1){
     // skill 1
-    battle_msg = '使用普攻，造成 5 點傷害\n';
+    var damage_value = useSkill(hero, cur_mon, normalAttack);
+    battle_msg = '使用普攻，造成' + damage_value + ' 點傷害\n';
+    if (cur_mon.hp <= 0)
+      battle_msg += '打倒' + cur_mon.name + '!\n'
   }
   else if (input == 2)
   {
