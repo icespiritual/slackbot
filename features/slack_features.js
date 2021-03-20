@@ -31,7 +31,7 @@ var final_map = [[1,1,0,1,1],
                  [1,1,0,1,1]];  // with hero/monsters/...
 var dungeon_map_show = blackline + blackline + blackline + blackline + blackline;
 // monster data
-var mon_ant = {'id':200, 'hp':10 'mp':0 'atk':5 'def':3 'agi':3 'mat':0 'mdef':0 ''};
+var mon_ant = {'id':200, 'hp':10, 'mp':0, 'atk':5, 'def':3,'agi':3, 'mat':0, 'mdef':0};
 
 function generate_dungeon_map_show(dun_map){
   dungeon_map_show = '';
