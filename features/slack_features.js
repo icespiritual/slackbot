@@ -15,8 +15,8 @@ emoji_table[1] = ':black_square:';
 emoji_table[2] = ':door:';
 emoji_table[100] = ':white_haired_woman:';
 var dungeon_map = [[2,1,1,1,2],
-                 [0,1,1,1,0],
-                 [0,0,0,0,0],
+                 [0,0,1,0,0],
+                 [1,0,0,0,1],
                  [1,0,0,0,1],
                  [1,0,0,0,1],
                  [1,1,0,1,1]];
