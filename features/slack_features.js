@@ -10,10 +10,10 @@ var cur_handler = main_menu;
 var cur_display = '眾多冒險者都想探索這座迷宮... \n 1:開始遊戲 2:載入進度';
 var blackline = ':black_square::black_square::black_square::black_square::black_square:\n';
 var emoji_table = [':white_square:',':black_square:',':white_haired_woman:'];
-var dungeon_map = [[1,1,0,1,1],
-                 [1,1,0,1,1],
-                 [1,0,0,1,1],
-                 [1,1,0,1,1],
+var dungeon_map = [[0,1,1,1,0],
+                 [0,0,0,0,0],
+                 [1,0,0,0,1],
+                 [1,0,0,0,1],
                  [1,1,0,1,1]];
 var dungeon_height = dungeon_map.length;
 var dungeon_width = dungeon_map[0].length;
@@ -36,7 +36,7 @@ function generate_dungeon_map_show(dun_map){
 var hero = new Object();
 hero.x = 2;
 hero.y = 0;
-function move_hero(myhero, input, dun_map, width, height){
+/*function move_hero(myhero, input, dun_map, width, height){
   if (input == 'w'){
     if (myhero.y < height - 1 && dun_map[height - myhero.y - 2][myhero.x] == 0)
       myhero.y += 1;
@@ -53,7 +53,7 @@ function move_hero(myhero, input, dun_map, width, height){
     if (myhero.x < width - 1 && dun_map[height - myhero.y - 1][myhero.x + 1] == 0)
       myhero.x += 1;
   }  
-}
+}*/
 
 function compose_final_map(dungeon_map, myhero, final_result){
   for (var j=0;j<dungeon_height;j++){
@@ -97,8 +97,8 @@ function dungeon(input){
     cur_display = '眾多冒險者都想探索這座迷宮... \n 1:開始遊戲 2:載入進度';
   }
   else{
-    move_hero(hero, input, dungeon_map, dungeon_width, dungeon_height);
-    console.log(hero.x, hero.y);
+    //move_hero(hero, input, dungeon_map, dungeon_width, dungeon_height);
+    //console.log(hero.x, hero.y);
   }
   //console.log(final_map);
   compose_final_map(dungeon_map, hero, final_map);
