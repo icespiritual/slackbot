@@ -44,9 +44,7 @@ function generate_dungeon_map_show(dun_map){
   }
 }
 
-var hero = new Object();
-hero.x = 2;
-hero.y = 0;
+var hero = {'id':100, 'hp':20, 'mp':10, 'atk':6, 'def':3,'agi':5, 'mat':4, 'mdef':3, 'x':2, 'y':0};
 /*function move_hero(myhero, input, dun_map, width, height){
   if (input == 'w'){
     if (myhero.y < height - 1 && dun_map[height - myhero.y - 2][myhero.x] == 0)
@@ -89,6 +87,10 @@ function compose_final_map(dungeon_map, myhero, enemy, final_result){
     // draw mon
   }
   //console.log(final_result);
+}
+
+function attack(myhero, enemy, xxx){
+  
 }
 
 function main_menu(input){
