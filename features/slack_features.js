@@ -93,14 +93,16 @@ function main_menu(input){
 
 function village(input){
   if (input == 1){
-    cur_handler = dungeon;
+    cur_handler = dungeon_move;
     cur_display = '你進入了迷宮... \n 1. 確定 2. 重來'
   }
 }
 
-function dungeon(input){
-  if (input == 1){
-    // do nothing
+function dungeon_move(input){
+  var bBattle = false;
+  if (input == 1){ // enter room
+    // random? pick a room
+    bBattle = true;
   }
   if (input == 2){
     cur_handler = main_menu;
@@ -115,6 +117,9 @@ function dungeon(input){
   //console.log(final_map);
   generate_dungeon_map_show(final_map);
   cur_display = dungeon_map_show + '1:左邊, 2:右邊 c:角色面板';
+}
+
+function dungeon_battle(input){
 }
 
 module.exports = function(controller) {
