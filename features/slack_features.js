@@ -107,12 +107,14 @@ function village(input){
 
 function dungeon_move(input){
   var bBattle = false;
+  var message = '1:左邊, 2:右邊 c:角色面板';
   console.log("deungeon_move input:" + input);
   if (input == 1){ // enter room
     // random? pick a room
     bBattle = true;
     cur_mon = Object.assign({}, mon_ant);
     console.log('picked a room');
+    message = '遇見了敵人! b:戰鬥 c:角色面板\n';
   }
   else if (input == 2){
     cur_handler = main_menu;
@@ -120,7 +122,8 @@ function dungeon_move(input){
   }
   else if (input == 'b'){
     cur_handler = dungeon_battle;
-    cur_display = dungeon_map_show + '開始戰鬥! 1:技能1 2:技能2\n';
+    message = '開始戰鬥! 1:技能1 2:技能2\n'
+    //cur_display = dungeon_map_show + '開始戰鬥! 1:技能1 2:技能2\n';
     //move_hero(hero, input, dungeon_map, dungeon_width, dungeon_height);
     console.log('start battle');
   }
@@ -129,12 +132,8 @@ function dungeon_move(input){
   compose_final_map(dungeon_map, hero, cur_mon, final_map);
   //console.log(final_map);
   generate_dungeon_map_show(final_map);
-  if (bBattle){
-    cur_display = dungeon_map_show + '遇見了敵人! b:戰鬥 c:角色面板\n';
-  }
-  else{    
-    cur_display = dungeon_map_show + '1:左邊, 2:右邊 c:角色面板';
-  }
+  
+  cur_display = dungeon_map_show + message;
 }
 
 function dungeon_battle(input){
