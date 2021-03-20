@@ -142,11 +142,11 @@ function dungeon_battle(input){
   var base_msg = '1:技能1 2:技能2\n';
   if (input == 1){
     // skill 1
-    battle_msg = '使用普攻，造成 5 點傷害';
+    battle_msg = '使用普攻，造成 5 點傷害\n';
   }
   else if (input == 2)
   {
-    battle_msg = '使用暴斬，造成 10 點傷害';
+    battle_msg = '使用暴斬，造成 10 點傷害\n';
   }
   else
   {
