@@ -13,7 +13,8 @@ var emoji_table = new Object();
 emoji_table[0] = ':white_square:';//[':white_square:',':black_square:',':white_haired_woman:'];
 emoji_table[1] = ':black_square:';
 emoji_table[2] = ':door:';
-emoji_table[100] = ':white_haired_woman:';
+emoji_table[100] = ':white_haired_woman:'; // hero start from 100
+emoji_table[100] = ':ant:'; // monsters start from 200
 var dungeon_map = [[2,1,1,1,2],
                  [0,0,1,0,0],
                  [1,0,0,0,1],
@@ -110,7 +111,7 @@ function dungeon(input){
   compose_final_map(dungeon_map, hero, final_map);
   //console.log(final_map);
   generate_dungeon_map_show(final_map);
-  cur_display = dungeon_map_show + 'w:上, a:左 s:下 d:右';
+  cur_display = dungeon_map_show + '1:左邊, 2:右邊 c:角色面板';
 }
 
 module.exports = function(controller) {
