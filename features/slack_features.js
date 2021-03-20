@@ -139,6 +139,7 @@ function dungeon_move(input){
 function dungeon_battle(input){
   cur_display = dungeon_map_show;
   var battle_msg = '';
+  var base_msg = '1:技能1 2:技能2\n';
   if (input == 1){
     // skill 1
     battle_msg = '使用普攻，造成 5 點傷害';
@@ -152,6 +153,7 @@ function dungeon_battle(input){
     // do thing
   }
   cur_display += battle_msg;
+  cur_display += base_msg;
 }
 
 module.exports = function(controller) {
