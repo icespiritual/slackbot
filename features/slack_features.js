@@ -32,6 +32,7 @@ var final_map = [[1,1,0,1,1],
 var dungeon_map_show = blackline + blackline + blackline + blackline + blackline;
 // monster data
 var mon_ant = {'id':200, 'hp':10, 'mp':0, 'atk':5, 'def':3,'agi':3, 'mat':0, 'mdef':0};
+var cur_mon = null;
 
 function generate_dungeon_map_show(dun_map){
   dungeon_map_show = '';
@@ -65,7 +66,7 @@ hero.y = 0;
   }  
 }*/
 
-function compose_final_map(dungeon_map, myhero, final_result){
+function compose_final_map(dungeon_map, myhero, enemy, final_result){
   for (var j=0;j<dungeon_height;j++){
     for (var i=0;i<dungeon_width;i++){
       final_result[j][i] = dungeon_map[j][i];
@@ -80,6 +81,10 @@ function compose_final_map(dungeon_map, myhero, final_result){
   }
   else{
     console.log('not move');
+  }
+  if (enemy != null){
+    final_result[3][2] = enemy.id; // 3/2 should change to enemy position variables?
+    // draw mon
   }
   //console.log(final_result);
 }
@@ -103,23 +108,46 @@ function dungeon_move(input){
   if (input == 1){ // enter room
     // random? pick a room
     bBattle = true;
+    cur_mon = Object.assign({}, mon_ant);
   }
-  if (input == 2){
+  else if (input == 2){
     cur_handler = main_menu;
     cur_display = '眾多冒險者都想探索這座迷宮... \n 1:開始遊戲 2:載入進度';
   }
-  else{
+  else if (input == 'b'){
+    cur_handler = dungeon_battle;
+    cur_display = dungeon_map_show + '開始戰鬥! 1:技能1 2:技能2\n';
     //move_hero(hero, input, dungeon_map, dungeon_width, dungeon_height);
     //console.log(hero.x, hero.y);
   }
   //console.log(final_map);
-  compose_final_map(dungeon_map, hero, final_map);
+  compose_final_map(dungeon_map, hero, cur_mon, final_map);
   //console.log(final_map);
   generate_dungeon_map_show(final_map);
-  cur_display = dungeon_map_show + '1:左邊, 2:右邊 c:角色面板';
+  if (bBattle){
+    cur_display = dungeon_map_show + '遇見了敵人! b:戰鬥 c:角色面板\n';
+  }
+  else{    
+    cur_display = dungeon_map_show + '1:左邊, 2:右邊 c:角色面板';
+  }
 }
 
 function dungeon_battle(input){
+  cur_display = dungeon_map_show;
+  var battle_msg = '';
+  if (input == 1){
+    // skill 1
+    battle_msg = '使用普攻，造成 5 點傷害';
+  }
+  else if (input == 2)
+  {
+    battle_msg = '使用暴斬，造成 10 點傷害';
+  }
+  else
+  {
+    // do thing
+  }
+  cur_display += battle_msg;
 }
 
 module.exports = function(controller) {
