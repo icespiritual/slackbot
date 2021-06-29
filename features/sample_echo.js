@@ -4,6 +4,7 @@
  */
 var request = require("request");
 var cheerio = require("cheerio");
+let youtube = require('youtube-search-api');
 const got = require("got");
 var last_query_time = 0;
 var last_keyword = ' ';
@@ -412,8 +413,16 @@ module.exports = function(controller) {
       }
     });
 
-    controller.on('message', async(bot, message) => {
-        //await bot.reply(message, `Echo: ${ message.text }`);
+    controller.hears(new RegExp(/YT/),'message', async(bot, message) => {
+      youtube.GetListByKeyword('YAGOO',true).then(res=>{
+      console.log("Page1");
+      console.log("length:\n");
+      console.log(res.items.length);
+        console.log(res.items[0].id); //https://www.youtube.com/watch?v=
+      }).catch(err=>{
+        console.log(err);
+      });
+      await bot.reply(message, `test`);
     });
 
 }
