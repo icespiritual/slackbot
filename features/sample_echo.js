@@ -414,15 +414,27 @@ module.exports = function(controller) {
     });
 
     controller.hears(new RegExp(/YT/),'message', async(bot, message) => {
-      youtube.GetListByKeyword('YAGOO',true).then(res=>{
-      console.log("Page1");
+      var youtube_url = "找不到";
+      var keyword = message.text.slice(2);
+      if (keyword.length == 0)
+      {
+        await bot.reply(message, "請別抽空字串");
+        return;
+      }
+      console.log('YT keyword: ' + keyword);
+      await youtube.GetListByKeyword(keyword,true).then(res=>{
+      //console.log("Page1");
       console.log("length:\n");
       console.log(res.items.length);
-        console.log(res.items[0].id); //https://www.youtube.com/watch?v=
+        if (res.items.length > 0){
+          console.log(res.items[0].id); //https://www.youtube.com/watch?v=
+          youtube_url = 'https://www.youtube.com/watch?v=' + res.items[0].id;
+          return;
+        }
       }).catch(err=>{
         console.log(err);
       });
-      await bot.reply(message, `test`);
+      await bot.reply(message, youtube_url);
     });
 
 }
