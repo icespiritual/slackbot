@@ -415,6 +415,10 @@ module.exports = function(controller) {
 
     controller.hears(new RegExp(/YT/),'message', async(bot, message) => {
       var youtube_url = "找不到";
+      if (message.text.search('YT') != 0)
+      {
+        return;
+      }
       var keyword = message.text.slice(2);
       if (keyword.length == 0)
       {
