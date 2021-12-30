@@ -205,6 +205,7 @@ module.exports = function(controller) {
           tablemike.pㄇㄎ駁二 = `https://i.imgur.com/vfVs7xB.jpeg`;
           tablemike.pㄇㄎ火災 = `https://i.imgur.com/VVQiBX3.jpg`;
 		      tablemike.pㄇㄎ讚 = `https://upload.cc/i1/2021/01/28/pv1oqH.gif`;
+          tablemike.pㄇㄎ愛心 = `https://i.imgur.com/gIDON4a.jpeg`;
           
           var result = query_image_table(tablemike,'ㄇㄎ',keyword);
           if (result != ''){
