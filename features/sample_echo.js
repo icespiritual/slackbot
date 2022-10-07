@@ -431,11 +431,18 @@ module.exports = function(controller) {
       //console.log("Page1");
       console.log("length:\n");
       console.log(res.items.length);
-        if (res.items.length > 0){
-          console.log(res.items[0].id); //https://www.youtube.com/watch?v=
-          youtube_url = 'https://www.youtube.com/watch?v=' + res.items[0].id;
-          return;
-        }
+        
+      for (var i=0;i<res.items.length;i++)
+      {
+        if (res.items[i].type != 'video')
+          continue;
+        console.log(res.items[i].type);
+        console.log(res.items[i].id); //https://www.youtube.com/watch?v=
+        youtube_url = 'https://www.youtube.com/watch?v=' + res.items[i].id;
+        break;
+      }
+      return;
+        
       }).catch(err=>{
         console.log(err);
       });
