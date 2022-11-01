@@ -450,7 +450,7 @@ module.exports = function(controller) {
     });
   
     controller.hears(new RegExp(/什麼是/),'message', async(bot, message) => {
-      var youtube_url = "找不到";
+      var wiki_url = "找不到";
       if (message.text.search('什麼是') != 0)
       {
         return;
@@ -462,7 +462,7 @@ module.exports = function(controller) {
         return;
       }
       console.log('keyword: ' + keyword);
-      var wiki_url = 'https://zh.wikipedia.org/zh-tw/' + keyword;
+      wiki_url = 'https://zh.wikipedia.org/zh-tw/' + keyword;
       await bot.reply(message, wiki_url);
     });
 
