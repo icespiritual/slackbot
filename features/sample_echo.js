@@ -455,7 +455,7 @@ module.exports = function(controller) {
       {
         return;
       }
-      var keyword = message.text.slice(2);
+      var keyword = message.text.slice(3);
       if (keyword.length == 0)
       {
         await bot.reply(message, "請別抽空字串");
