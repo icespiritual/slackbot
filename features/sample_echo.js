@@ -463,7 +463,19 @@ module.exports = function(controller) {
       }
       console.log('keyword: ' + keyword);
       wiki_url = 'https://zh.wikipedia.org/zh-tw/' + keyword;
-      await bot.reply(message, wiki_url);
+      try {
+        const response = await got('wiki_url');
+        console.log(response.body);
+        var $ = cheerio.load(response.body);
+        var result = [];
+        //var titles = $("td.rate-content-cash.text-right.print_hide");
+        console.log(cheerio.text($('body')));
+      }
+      catch (error) {
+              // Check the code property, and when its a PlatformError, log the whole response.
+              console.log(error);
+        await bot.reply(message, 'wiki沒這東西');
+      }
     });
 
 }
