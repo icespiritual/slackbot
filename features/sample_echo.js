@@ -448,5 +448,22 @@ module.exports = function(controller) {
       });
       await bot.reply(message, youtube_url);
     });
+  
+    controller.hears(new RegExp(/什麼是/),'message', async(bot, message) => {
+      var youtube_url = "找不到";
+      if (message.text.search('什麼是') != 0)
+      {
+        return;
+      }
+      var keyword = message.text.slice(2);
+      if (keyword.length == 0)
+      {
+        await bot.reply(message, "請別抽空字串");
+        return;
+      }
+      console.log('keyword: ' + keyword);
+      var wiki_url = 'https://zh.wikipedia.org/zh-tw/' + keyword;
+      await bot.reply(message, wiki_url);
+    });
 
 }
