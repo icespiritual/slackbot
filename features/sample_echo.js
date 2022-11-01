@@ -470,6 +470,7 @@ module.exports = function(controller) {
         var result = [];
         //var titles = $("td.rate-content-cash.text-right.print_hide");
         console.log(cheerio.text($('body')));
+        await bot.reply(message, wiki_url);
       }
       catch (error) {
               // Check the code property, and when its a PlatformError, log the whole response.
