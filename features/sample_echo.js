@@ -464,12 +464,12 @@ module.exports = function(controller) {
       console.log('keyword: ' + keyword);
       wiki_url = 'https://zh.wikipedia.org/zh-tw/' + keyword;
       try {
-        const response = await got('wiki_url');
-        console.log(response.body);
+        const response = await got(wiki_url);
+        //console.log(response.body);
         var $ = cheerio.load(response.body);
         var result = [];
         //var titles = $("td.rate-content-cash.text-right.print_hide");
-        console.log(cheerio.text($('body')));
+        //console.log(cheerio.text($('body')));
         await bot.reply(message, wiki_url);
       }
       catch (error) {
