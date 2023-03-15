@@ -17,10 +17,18 @@ import { SlackAdapter, SlackMessageTypeMiddleware, SlackEventMiddleware } from '
 //import { MongoClient } from 'mongodb';
 //const { MongoClient } = require('mongodb');
 //const { MongoDbStorage } = require('botbuilder-storage-mongodb');
-import { MongoDbStorage } from 'botbuilder-storage-mongodb';
+//import { MongoDbStorage } from 'botbuilder-storage-mongodb';
+import pkg from 'botbuilder-storage-mongodb';
+const { MongoDbStorage } = pkg;
 
 // Load process.env values from .env file
-require('dotenv').config();
+//require('dotenv').config();
+import {} from 'dotenv/config';
+
+import path from 'path';
+import {fileURLToPath} from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 let storage = null;
 if (process.env.MONGO_URI) {
