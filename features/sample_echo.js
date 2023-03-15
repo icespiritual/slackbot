@@ -11,7 +11,7 @@ const got = require("got");
 //import youtube from 'youtube-search-api';
 //import got from 'got';
 //import {ChatGPTUnofficialProxyAPI} from 'chatgpt';
-var ChatGPTUnofficialProxyAPI = require('chatgpt-api-cjs');
+var ChatGPTUnofficialProxyAPI2 = require('chatgpt-api-cjs');
 var last_query_time = 0;
 var last_keyword = ' ';
 var minutes = 1000 * 60;
@@ -497,7 +497,7 @@ module.exports = function(controller) {
         return;
       }
       console.log('keyword: ' + keyword);
-      const api = new ChatGPTUnofficialProxyAPI({
+      const api = new ChatGPTUnofficialProxyAPI2({
         accessToken: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1UaEVOVUpHTkVNMVFURTRNMEZCTWpkQ05UZzVNRFUxUlRVd1FVSkRNRU13UmtGRVFrRXpSZyJ9.eyJodHRwczovL2FwaS5vcGVuYWkuY29tL3Byb2ZpbGUiOnsiZW1haWwiOiJpY2VzcGlyaXR1YWxAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImdlb2lwX2NvdW50cnkiOiJUVyJ9LCJodHRwczovL2FwaS5vcGVuYWkuY29tL2F1dGgiOnsidXNlcl9pZCI6InVzZXItOGNVeFZPUHBpWTNiWkIzamVURHU4N0x4In0sImlzcyI6Imh0dHBzOi8vYXV0aDAub3BlbmFpLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDEwMjI5NDA4MTM4NjUzODYzODYzMiIsImF1ZCI6WyJodHRwczovL2FwaS5vcGVuYWkuY29tL3YxIiwiaHR0cHM6Ly9vcGVuYWkub3BlbmFpLmF1dGgwYXBwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE2NzgyNTY4OTUsImV4cCI6MTY3OTQ2NjQ5NSwiYXpwIjoiVGRKSWNiZTE2V29USHROOTVueXl3aDVFNHlPbzZJdEciLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIG1vZGVsLnJlYWQgbW9kZWwucmVxdWVzdCBvcmdhbml6YXRpb24ucmVhZCBvZmZsaW5lX2FjY2VzcyJ9.nCt55fOFlGtL7EfERUAAlfJRkNCCy8C-wi01VT2PLzG6Xwofnf06jMjm0Z0UqiwRI851OttCELP371ORttzlP7H9xj68LpWSVJbZYdMFwzQrwWms72QNAtE9wJmvkM_xOnCiCYL1mC997YuQPzRIb0kKHUPQfa_jAi0GKGboWutReovklbM6wKmYWgtOWDm1jkaGvJ4hXxiNqJkK6PtUtf-riIVl9Cx3JJmiR0QjqBw8qcmOeyfPCq42kZTBk8Tz-EQEFC_aT_yA35HXyxkUE3wRdklv5EVZUSYl5nbf5yclqc1AK5bK90G3evYXbUfqvRnTunP6kLHlJajMhFPuBg"
       })
 
