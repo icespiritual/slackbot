@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "bot.js",
-  "type": "module",
   "scripts": {
     "start": "node bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,7 +21,8 @@
     "cheerio": "^0.22.0",
     "request": "^2.88.2",
     "youtube-search-api": "^1.0.10",
-    "chatgpt": "^5.0.10"
+    "chatgpt": "^5.0.10",
+    "chatgpt-api-cjs": "^5.0.15"
   },
   "engines": {
     "node": "16.x"

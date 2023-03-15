@@ -2,16 +2,16 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Licensed under the MIT License.
  */
-//var request = require("request");
-//var cheerio = require("cheerio");
-//let youtube = require('youtube-search-api');
-//const got = require("got");
-import request from "request";
-import cheerio from "cheerio";
-import youtube from 'youtube-search-api';
-import got from 'got';
-import {ChatGPTUnofficialProxyAPI} from 'chatgpt';
-//var ChatGPTUnofficialProxyAPI = require('chatgpt');
+var request = require("request");
+var cheerio = require("cheerio");
+let youtube = require('youtube-search-api');
+const got = require("got");
+//import request from "request";
+//import cheerio from "cheerio";
+//import youtube from 'youtube-search-api';
+//import got from 'got';
+//import {ChatGPTUnofficialProxyAPI} from 'chatgpt';
+var ChatGPTUnofficialProxyAPI = require('chatgpt-api-cjs');
 var last_query_time = 0;
 var last_keyword = ' ';
 var minutes = 1000 * 60;
