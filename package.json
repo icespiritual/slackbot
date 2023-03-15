@@ -20,6 +20,7 @@
     "mongodb": "^3.6.2",
     "cheerio": "^0.22.0",
     "request": "^2.88.2",
-    "youtube-search-api": "^1.0.10"
+    "youtube-search-api": "^1.0.10",
+    "chatgpt": "^5.0.10"
   }
 }
