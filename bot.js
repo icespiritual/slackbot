@@ -5,15 +5,19 @@
 // This is the main file for the starter-slack bot.
 
 // Import Botkit's core features
-const { Botkit } = require('botkit');
-const { BotkitCMSHelper } = require('botkit-plugin-cms');
+//const { Botkit } = require('botkit');
+import { Botkit } from 'botkit';
+//const { BotkitCMSHelper } = require('botkit-plugin-cms');
+import { BotkitCMSHelper } from 'botkit-plugin-cms';
 
 // Import a platform-specific adapter for slack.
 
-const { SlackAdapter, SlackMessageTypeMiddleware, SlackEventMiddleware } = require('botbuilder-adapter-slack');
+//const { SlackAdapter, SlackMessageTypeMiddleware, SlackEventMiddleware } = require('botbuilder-adapter-slack');
+import { SlackAdapter, SlackMessageTypeMiddleware, SlackEventMiddleware } from 'botbuilder-adapter-slack';
 //import { MongoClient } from 'mongodb';
 //const { MongoClient } = require('mongodb');
-const { MongoDbStorage } = require('botbuilder-storage-mongodb');
+//const { MongoDbStorage } = require('botbuilder-storage-mongodb');
+import { MongoDbStorage } from 'botbuilder-storage-mongodb';
 
 // Load process.env values from .env file
 require('dotenv').config();
