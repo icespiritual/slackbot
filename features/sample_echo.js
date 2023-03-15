@@ -7,7 +7,7 @@ var cheerio = require("cheerio");
 let youtube = require('youtube-search-api');
 const got = require("got");
 //import {ChatGPTUnofficialProxyAPI} from 'chatgpt';
-let ChatGPTUnofficialProxyAPI = require('youtube-search-api');
+var ChatGPTUnofficialProxyAPI = require('chatgpt');
 var last_query_time = 0;
 var last_keyword = ' ';
 var minutes = 1000 * 60;
