@@ -11,7 +11,7 @@ const got = require("got");
 //import youtube from 'youtube-search-api';
 //import got from 'got';
 //import {ChatGPTUnofficialProxyAPI} from 'chatgpt';
-var ChatGPTUnofficialProxyAPI = require('chatgpt-api-cjs');
+let {ChatGPTUnofficialProxyAPI} = require('chatgpt-api-cjs');
 var last_query_time = 0;
 var last_keyword = ' ';
 var minutes = 1000 * 60;
@@ -485,7 +485,7 @@ module.exports = function(controller) {
       }
     });
   
-  /*controller.hears(new RegExp(/chat/),'message', async(bot, message) => {
+  controller.hears(new RegExp(/chat/),'message', async(bot, message) => {
       if (message.text.search('chat') != 0)
       {
         return;
@@ -504,6 +504,6 @@ module.exports = function(controller) {
       const res = await api.sendMessage(keyword)
       await bot.reply(message, res.text);
       
-    });*/
+    });
 
 }
