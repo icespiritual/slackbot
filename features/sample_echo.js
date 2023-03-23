@@ -12,6 +12,7 @@ const got = require("got");
 //import got from 'got';
 //import {ChatGPTUnofficialProxyAPI} from 'chatgpt';
 let {ChatGPTUnofficialProxyAPI} = require('chatgpt-api-cjs');
+
 var last_query_time = 0;
 var last_keyword = ' ';
 var minutes = 1000 * 60;

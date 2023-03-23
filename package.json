@@ -23,7 +23,8 @@
     "youtube-search-api": "^1.0.10",
     "chatgpt": "^5.0.10",
     "chatgpt-api-cjs": "^5.0.15",
-    "isomorphic-fetch": "^3.0.0"
+    "isomorphic-fetch": "^3.0.0",
+    "unfetch": "^5.0.0"
   },
   "engines": {
     "node": "16.x"
