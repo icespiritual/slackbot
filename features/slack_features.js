@@ -7,6 +7,7 @@ const { Configuration, OpenAIApi } = require("openai");
 const readlineSync = require("readline-sync");
 
 const history = [];
+var last_msg_id = [];
 
 var player_list = new Object();
 var game = new Object();
@@ -234,6 +235,13 @@ module.exports = function(controller) {
     });
 
     controller.on('direct_mention', async(bot, message) => {
+        if (last_msg_id.length > 0 && last_msg_id.indexOf(message.client_msg_id) >= 0)
+        {
+          console.log('same msg id!');
+          return;
+        }
+        last_msg_id.push(message.client_msg_id);
+        //console.log('last msg id:',message.client_msg_id);
         const configuration = new Configuration({
           apiKey: process.env.OPENAI_API_KEY,
         });
@@ -255,7 +263,7 @@ module.exports = function(controller) {
         const completion_text = completion.data.choices[0].message.content;
         console.log(completion_text);
         history.push([user_input, completion_text]);
-        await bot.reply(message, `I heard a direct mention that said "${ message.text }"`);
+        await bot.reply(message, completion_text);
     });
 
     controller.on('mention', async(bot, message) => {
