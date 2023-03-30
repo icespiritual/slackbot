@@ -3,6 +3,11 @@
  * Licensed under the MIT License.
  */
 const { SlackDialog } = require('botbuilder-adapter-slack');
+const { Configuration, OpenAIApi } = require("openai");
+const readlineSync = require("readline-sync");
+
+const history = [];
+
 var player_list = new Object();
 var game = new Object();
 var game_start = false;
@@ -229,6 +234,27 @@ module.exports = function(controller) {
     });
 
     controller.on('direct_mention', async(bot, message) => {
+        const configuration = new Configuration({
+          apiKey: process.env.OPENAI_API_KEY,
+        });
+        const openai = new OpenAIApi(configuration);
+
+        const user_input = message.text;//readlineSync.question("Your input: ");
+
+        const messages = [];
+        for (const [input_text, completion_text] of history) {
+          messages.push({ role: "user", content: input_text });
+          messages.push({ role: "assistant", content: completion_text });
+        }
+
+        messages.push({ role: "user", content: user_input });
+        const completion = await openai.createChatCompletion({
+          model: "gpt-3.5-turbo",
+          messages: messages,
+        });
+        const completion_text = completion.data.choices[0].message.content;
+        console.log(completion_text);
+        history.push([user_input, completion_text]);
         await bot.reply(message, `I heard a direct mention that said "${ message.text }"`);
     });
 
