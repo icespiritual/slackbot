@@ -11,6 +11,8 @@ const got = require("got");
 //import youtube from 'youtube-search-api';
 //import got from 'got';
 //import {ChatGPTUnofficialProxyAPI} from 'chatgpt';
+const { Configuration, OpenAIApi } = require("openai");
+const readlineSync = require("readline-sync");
 
 var last_query_time = 0;
 var last_keyword = ' ';
