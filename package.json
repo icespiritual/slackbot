@@ -21,10 +21,7 @@
     "cheerio": "^0.22.0",
     "request": "^2.88.2",
     "youtube-search-api": "^1.0.10",
-    "chatgpt": "^5.0.10",
-    "chatgpt-api-cjs": "^5.0.15",
-    "isomorphic-fetch": "^3.0.0",
-    "unfetch": "^5.0.0"
+    "openai": "^3.2.1"
   },
   "engines": {
     "node": "16.x"
