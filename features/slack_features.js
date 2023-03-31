@@ -263,6 +263,8 @@ module.exports = function(controller) {
         const completion_text = completion.data.choices[0].message.content;
         console.log(completion_text);
         history.push([user_input, completion_text]);
+        if (history.length > 20)
+          history.shift();
         await bot.reply(message, completion_text);
     });
 
