@@ -256,6 +256,7 @@ module.exports = function(controller) {
         }
 
         messages.push({ role: "user", content: user_input });
+        console.log("before xx\n");
         const completion = await openai.createChatCompletion({
           model: "gpt-3.5-turbo",
           messages: messages,
