@@ -261,6 +261,7 @@ module.exports = function(controller) {
           model: "gpt-3.5-turbo",
           messages: messages,
         });
+      console.log("after xx\n");
         const completion_text = completion.data.choices[0].message.content;
         console.log(completion_text);
         history.push([user_input, completion_text]);
