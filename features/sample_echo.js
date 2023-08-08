@@ -173,7 +173,6 @@ module.exports = function(controller) {
           var tablemomolove = new Object();
           tablemomolove.p = '文詠珊';
           tablemomolove.p = '春夏';
-          tablemomolove.p = '采翎';
 			    tablemomolove.p = 'Lauren Lapkus';
 			    tablemomolove.p = 'Hannah Emily Anderson';
           var result = get_random_item(tablemomolove);
@@ -237,21 +236,18 @@ module.exports = function(controller) {
           }
         }
         else if (keyword == '社長老婆'){
-          console.log('社長老婆!')
-          var rng_value = Math.floor(Math.random() * 10);
-          if (rng_value < 3)
-            keyword = '張景嵐';
-          else if (rng_value < 6){
-            keyword = '大元';
-            var rng_value2 = Math.floor(Math.random() * 4);
-            if (rng_value2 < 1){
-              await bot.reply(message, `https://i.imgur.com/kO87NVp.jpg`);
-              working = 0;
-              return;
-            }
+          var tablecheya = new Object();
+          tablecheya.pA = `張景嵐`;
+          tablecheya.pB = `大元`;
+          tablecheya.pC = `曾智希`;
+          var result = get_random_item(tablecheya);
+          if (result != ''){
+            keyword = result;
           }
           else
-            keyword = '曾智希';
+          {
+            keyword = '社長老婆'
+          }
         }
         else if (message.text.search('社長') >= 0){
           var tablecheya = new Object();
