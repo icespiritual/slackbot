@@ -510,9 +510,22 @@ module.exports = function(controller) {
         links[0] = $selected.attr('href');
         console.log($selected);*/
         var index = response.body.search('egMi0 kCrYT');
-        console.log(index);
-        //var $ = cheerio.load(response.body);
-        console.log(response.body);
+        var new_body = response.body.slice(index);
+        while (index > 0)
+        {
+          console.log(index);
+          index = new_body.search('https');
+          var end_index = new_body.search('data-ved') - 2;
+          google_url = new_body.slice(index, end_index);
+          if (google_url.search('yahoo') > 0)
+            break;
+          new_body = response.body.slice(index);
+          //var $ = cheerio.load(response.body);
+          //console.log(new_body);
+        }
+        if (index < 0) {
+          google_url = '找不到';
+        }
         await bot.reply(message, google_url);
       }
       catch (error) {
