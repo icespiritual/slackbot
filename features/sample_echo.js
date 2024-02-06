@@ -507,10 +507,8 @@ module.exports = function(controller) {
         var $ = cheerio.load(response.body);
         var result = [];
         const $selected = $('.yuRUbf');
-        $(".yuRUbf").each((i, el) => {
-        links[i] = $(el).attr("href");
-          console.log(links[i]);
-        });
+        links[0] = $selected.attr('href');
+        console.log(links[0]);
         //console.log(cheerio.text($('body')));
         await bot.reply(message, google_url);
       }
