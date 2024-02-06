@@ -485,6 +485,35 @@ module.exports = function(controller) {
       }
     });
   
+      controller.hears(new RegExp(/估狗/),'message', async(bot, message) => {
+      var google_url = "找不到";
+      if (message.text.search('估狗') != 0)
+      {
+        return;
+      }
+      var keyword = message.text.slice(2);
+      if (keyword.length == 0)
+      {
+        await bot.reply(message, "請別估狗空字串");
+        return;
+      }
+      keyword = keyword.replace(' ','+');
+      console.log('keyword: ' + keyword);
+      google_url = 'https://www.google.com/search?q=' + keyword;
+      try {
+        const response = await got(google_url);
+        //console.log(response.body);
+        var $ = cheerio.load(response.body);
+        var result = [];
+        //console.log(cheerio.text($('body')));
+        await bot.reply(message, google_url);
+      }
+      catch (error) {
+              // Check the code property, and when its a PlatformError, log the whole response.
+              console.log(error);
+        await bot.reply(message, 'google不到');
+      }
+    });
   /*controller.hears(new RegExp(/chat/),'message', async(bot, message) => {
       if (message.text.search('chat') != 0)
       {
