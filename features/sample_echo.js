@@ -511,15 +511,22 @@ module.exports = function(controller) {
         console.log($selected);*/
         var index = response.body.search('egMi0 kCrYT');
         var new_body = response.body.slice(index);
+        index = new_body.search('https');
         while (index > 0)
         {
           console.log(index);
-          index = new_body.search('https');
           var end_index = new_body.search('data-ved') - 2;
           google_url = new_body.slice(index, end_index);
-          if (google_url.search('yahoo') > 0)
-            break;
-          new_body = response.body.slice(index);
+          console.log(google_url);
+          if (google_url.search('facebook') > 0)
+          {
+            new_body = new_body.slice(end_index+10);
+            index = new_body.search('https');
+            continue;
+          }
+          index = google_url.search('&amp;');
+          google_url = google_url.slice(0,index);
+          break;
           //var $ = cheerio.load(response.body);
           //console.log(new_body);
         }
