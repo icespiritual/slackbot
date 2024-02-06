@@ -499,20 +499,20 @@ module.exports = function(controller) {
       }
       keyword = keyword.replace(' ','+');
       console.log('keyword: ' + keyword);
-      google_url = 'https://www.google.com/search?q=' + keyword;
+      google_url = 'https://www.google.com/search?q=' + keyword + '&gl=tw';
       var links = [];
       try {
         const response = await got(google_url);
         //console.log(response.body);
         /*var $ = cheerio.load(response.body);
         var result = [];
-        const $selected = $('.N54PNb BToiNc cvP2Ce');
+        const $selected = $('.egMi0 kCrYT');
         links[0] = $selected.attr('href');
         console.log($selected);*/
-        var index = response.body.search('yuRUbf');
+        var index = response.body.search('egMi0 kCrYT');
         console.log(index);
-        var $ = cheerio.load(response.body);
-        console.log(cheerio.text($('body')));
+        //var $ = cheerio.load(response.body);
+        console.log(response.body);
         await bot.reply(message, google_url);
       }
       catch (error) {
