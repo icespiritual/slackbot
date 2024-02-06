@@ -500,11 +500,17 @@ module.exports = function(controller) {
       keyword = keyword.replace(' ','+');
       console.log('keyword: ' + keyword);
       google_url = 'https://www.google.com/search?q=' + keyword;
+      var links = [];
       try {
         const response = await got(google_url);
         //console.log(response.body);
         var $ = cheerio.load(response.body);
         var result = [];
+        const $selected = $('.yuRUbf');
+        $(".yuRUbf").each((i, el) => {
+        links[i] = $(el).attr("href");
+          console.log(links[i]);
+        });
         //console.log(cheerio.text($('body')));
         await bot.reply(message, google_url);
       }
