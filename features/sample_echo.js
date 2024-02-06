@@ -485,7 +485,13 @@ module.exports = function(controller) {
       }
     });
   
-      controller.hears(new RegExp(/估狗/),'message', async(bot, message) => {
+    controller.hears(new RegExp(/估狗/),'message', async(bot, message) => {
+      if (last_msg_id.length > 0 && last_msg_id.indexOf(message.client_msg_id) >= 0)
+      {
+        console.log('same msg id!');
+        return;
+      }
+      last_msg_id.push(message.client_msg_id);
       var google_url = "找不到";
       if (message.text.search('估狗') != 0)
       {
