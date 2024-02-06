@@ -504,12 +504,15 @@ module.exports = function(controller) {
       try {
         const response = await got(google_url);
         //console.log(response.body);
-        var $ = cheerio.load(response.body);
+        /*var $ = cheerio.load(response.body);
         var result = [];
-        const $selected = $('.yuRUbf');
+        const $selected = $('.N54PNb BToiNc cvP2Ce');
         links[0] = $selected.attr('href');
-        console.log(links[0]);
-        //console.log(cheerio.text($('body')));
+        console.log($selected);*/
+        var index = response.body.search('yuRUbf');
+        console.log(index);
+        var $ = cheerio.load(response.body);
+        console.log(cheerio.text($('body')));
         await bot.reply(message, google_url);
       }
       catch (error) {
