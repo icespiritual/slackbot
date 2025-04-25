@@ -12,7 +12,6 @@ const got = require("got");
 //import got from 'got';
 //import {ChatGPTUnofficialProxyAPI} from 'chatgpt';
 
-
 var last_query_time = 0;
 var last_keyword = ' ';
 var minutes = 1000 * 60;
@@ -228,6 +227,7 @@ module.exports = function(controller) {
           table52.p52枝枝神秘 = `https://i.imgur.com/Zke2Cyl.jpg`;
           table52.p52謎之女 = `https://i.imgur.com/B8niuA4.jpg`;
           table52.p52坐 = `https://i.imgur.com/eyF1PW9.jpg`;
+          table52.p52美美 = `https://imgur.com/a/iJ1E6mR.jpg`;
           var result = query_image_table(table52,'52',keyword);
           if (result != ''){
             await bot.reply(message, result);
