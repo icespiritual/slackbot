@@ -6,7 +6,9 @@ const { SlackDialog } = require('botbuilder-adapter-slack');
 const { Configuration, OpenAIApi } = require("openai");
 const readlineSync = require("readline-sync");
 
+// 添加這兩行來設定 fetch 和 Headers
 const fetch = require('node-fetch');
+global.fetch = fetch;
 global.Headers = fetch.Headers;
 
 const {GoogleGenAI} = require('@google/genai');
