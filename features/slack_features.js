@@ -273,15 +273,16 @@ module.exports = function(controller) {
         if (history.length > 20)
           history.shift();
         await bot.reply(message, completion_text);*/
-        await bot.reply(message, 'direct mention?');
+        //await bot.reply(message, 'direct mention?');
+        const response = await ai.models.generateContent({
+        model: 'gemini-2.0-flash-001',
+        contents: message.text,
+        });
+        await bot.reply(message, `Gemini said "${ response.text() }"`);
     });
 
     controller.on('mention', async(bot, message) => {
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.0-flash-001',
-        contents: message.text,
-      });
-        await bot.reply(message, `You mentioned me when you said "${ response.text() }"`);
+        await bot.reply(message, `You mentioned me when you said "${ message.text() }"`);
     });
 
     controller.hears('ephemeral', 'message,direct_message', async(bot, message) => {
