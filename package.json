@@ -23,7 +23,8 @@
     "youtube-search-api": "^1.0.10",
     "openai": "^3.2.1",
     "readline-sync": "^1.4.10",
-	  "@google/genai": "^0.14.0"
+	  "@google/genai": "^0.14.0",
+    "node-fetch": "^2.6.7"
   },
   "engines": {
     "node": "16.x"

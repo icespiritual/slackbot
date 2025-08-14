@@ -6,6 +6,9 @@ const { SlackDialog } = require('botbuilder-adapter-slack');
 const { Configuration, OpenAIApi } = require("openai");
 const readlineSync = require("readline-sync");
 
+const fetch = require('node-fetch');
+global.Headers = fetch.Headers;
+
 const {GoogleGenAI} = require('@google/genai');
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
