@@ -240,7 +240,7 @@ module.exports = function(controller) {
     });
 
     controller.on('direct_mention', async(bot, message) => {
-        if (last_msg_id.length > 0 && last_msg_id.indexOf(message.client_msg_id) >= 0)
+        /*if (last_msg_id.length > 0 && last_msg_id.indexOf(message.client_msg_id) >= 0)
         {
           console.log('same msg id!');
           return;
@@ -272,7 +272,8 @@ module.exports = function(controller) {
         history.push([user_input, completion_text]);
         if (history.length > 20)
           history.shift();
-        await bot.reply(message, completion_text);
+        await bot.reply(message, completion_text);*/
+        await bot.reply(message, 'direct mention?');
     });
 
     controller.on('mention', async(bot, message) => {
