@@ -283,11 +283,11 @@ module.exports = function(controller) {
         model: 'gemini-2.0-flash-001',
         contents: message.text,
         });
-        await bot.reply(message, `Gemini said "${ response.text() }"`);
+        await bot.reply(message, `Gemini said "${ response.text }"`);
     });
 
     controller.on('mention', async(bot, message) => {
-        await bot.reply(message, `You mentioned me when you said "${ message.text() }"`);
+        await bot.reply(message, `You mentioned me when you said "${ message.text }"`);
     });
 
     controller.hears('ephemeral', 'message,direct_message', async(bot, message) => {
