@@ -22,7 +22,8 @@
     "request": "^2.88.2",
     "youtube-search-api": "^1.0.10",
     "openai": "^3.2.1",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+	"google/genai": "^1.14.0"
   },
   "engines": {
     "node": "16.x"

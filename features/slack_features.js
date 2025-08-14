@@ -6,6 +6,11 @@ const { SlackDialog } = require('botbuilder-adapter-slack');
 const { Configuration, OpenAIApi } = require("openai");
 const readlineSync = require("readline-sync");
 
+import {GoogleGenAI} from '@google/genai';
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+
+const ai = new GoogleGenAI({apiKey: GEMINI_API_KEY});
+
 const history = [];
 var last_msg_id = [];
 
@@ -271,7 +276,11 @@ module.exports = function(controller) {
     });
 
     controller.on('mention', async(bot, message) => {
-        await bot.reply(message, `You mentioned me when you said "${ message.text }"`);
+      const response = await ai.models.generateContent({
+        model: 'gemini-2.0-flash-001',
+        contents: message.text,
+      });
+        await bot.reply(message, `You mentioned me when you said "${ response.text() }"`);
     });
 
     controller.hears('ephemeral', 'message,direct_message', async(bot, message) => {
