@@ -279,6 +279,12 @@ module.exports = function(controller) {
           history.shift();
         await bot.reply(message, completion_text);*/
         //await bot.reply(message, 'direct mention?');
+        if (last_msg_id.length > 0 && last_msg_id.indexOf(message.client_msg_id) >= 0)
+        {
+          console.log('same msg id!');
+          return;
+        }
+        last_msg_id.push(message.client_msg_id);
         const response = await ai.models.generateContent({
         model: 'gemini-2.0-flash-001',
         contents: message.text,
