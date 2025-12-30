@@ -286,7 +286,7 @@ module.exports = function(controller) {
         }
         last_msg_id.push(message.client_msg_id);
         const response = await ai.models.generateContent({
-        model: 'gemini-2.0-flash-001',
+        model: 'gemini-2.0-flash',
         contents: message.text,
         });
         await bot.reply(message, `Gemini said "${ response.text }"`);
