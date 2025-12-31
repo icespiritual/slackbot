@@ -285,11 +285,28 @@ module.exports = function(controller) {
           return;
         }
         last_msg_id.push(message.client_msg_id);
-        const response = await ai.models.generateContent({
-        model: 'gemini-2.0-flash',
-        contents: message.text,
-        });
-        await bot.reply(message, `Gemini said "${ response.text }"`);
+        var model_name = 'gemini-2.0-flash';
+        if (message.text.indexOf('gemini2.5') >= 0){
+          model_name = 'gemini-2.5';
+        }
+        else if (message.text.indexOf('gemini3') >= 0){
+          model_name = 'gemini-3-flash-preview';
+        }
+        console.log('model_name:', model_name);
+        var response = null;
+        try {
+          response = await ai.models.generateContent({
+          model: model_name,
+          contents: message.text,
+          });
+        }
+        catch (error) {
+          console.error('gemini error:', error);
+          await bot.reply(message, 'sorry, gemini API error');
+          return;
+        }
+        const responseText = response && response.text ? response.text : 'No response received';
+        await bot.reply(message, `Gemini said "${ responseText }"`);
     });
 
     controller.on('mention', async(bot, message) => {
