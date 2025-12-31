@@ -287,7 +287,7 @@ module.exports = function(controller) {
         last_msg_id.push(message.client_msg_id);
         var model_name = 'gemini-2.0-flash';
         if (message.text.indexOf('gemini2.5') >= 0){
-          model_name = 'gemini-2.5';
+          model_name = 'gemini-2.5-flash';
         }
         else if (message.text.indexOf('gemini3') >= 0){
           model_name = 'gemini-3-flash-preview';
