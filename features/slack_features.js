@@ -288,9 +288,11 @@ module.exports = function(controller) {
         var model_name = 'gemini-2.0-flash';
         if (message.text.indexOf('gemini2.5') >= 0){
           model_name = 'gemini-2.5-flash';
+          message.text = message.text.replace('gemini2.5','');
         }
         else if (message.text.indexOf('gemini3') >= 0){
           model_name = 'gemini-3-flash-preview';
+          message.text = message.text.replace('gemini3','');
         }
         console.log('model_name:', model_name);
         var response = null;
