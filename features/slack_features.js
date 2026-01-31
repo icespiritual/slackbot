@@ -19,6 +19,13 @@ const ai = new GoogleGenAI({apiKey: GEMINI_API_KEY});
 const history = [];
 var last_msg_id = [];
 
+// Model version mapping table
+var modelVersionMap = {
+  'gemini-2.0-flash': '2.0',
+  'gemini-2.5-flash': '2.5',
+  'gemini-3-flash-preview': '3.0'
+};
+
 var player_list = new Object();
 var game = new Object();
 var game_start = false;
@@ -285,8 +292,12 @@ module.exports = function(controller) {
           return;
         }
         last_msg_id.push(message.client_msg_id);
-        var model_name = 'gemini-2.0-flash';
-        if (message.text.indexOf('gemini2.5') >= 0){
+        var model_name = 'gemini-2.5-flash';
+        if (message.text.indexOf('gemini2.0') >= 0){
+          model_name = 'gemini-2.0-flash';
+          message.text = message.text.replace('gemini2.0','');
+        }
+        else if (message.text.indexOf('gemini2.5') >= 0){
           model_name = 'gemini-2.5-flash';
           message.text = message.text.replace('gemini2.5','');
         }
@@ -308,7 +319,8 @@ module.exports = function(controller) {
           return;
         }
         const responseText = response && response.text ? response.text : 'No response received';
-        await bot.reply(message, `Gemini said "${ responseText }"`);
+        const versionPrefix = modelVersionMap[model_name] || 'unknown';
+        await bot.reply(message, `Gemini said "[${ versionPrefix }] ${ responseText }"`);  
     });
 
     controller.on('mention', async(bot, message) => {
