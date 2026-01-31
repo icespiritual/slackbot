@@ -154,7 +154,7 @@ module.exports = function(controller) {
           working = 0;
           return;
         }
-        else if (keyword == 'momo'){
+        else if (message.text.search('momo') >= 0){
           var tablemomo = new Object();
           tablemomo.pmomoMarine = `宝鐘マリン`;
           tablemomo.pmomoSubaru = `大空スバル`;
