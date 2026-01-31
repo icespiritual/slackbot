@@ -159,7 +159,7 @@ module.exports = function(controller) {
           tablemomo.pmomoMarine = `宝鐘マリン`;
           tablemomo.pmomoSubaru = `大空スバル`;
           tablemomo.pmomoKiara = `Takanashi Kiara`;
-          tablemomo.pmomo躺 = 'https://i.imgur.com/a/nPmr4RS.jpg';
+          tablemomo.pmomo躺 = 'https://i.imgur.com/nPmr4RS.jpg';
 
           var result = query_image_table(tablemomo,'momo',keyword);
           if (result != ''){
