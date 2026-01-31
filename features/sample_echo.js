@@ -156,16 +156,16 @@ module.exports = function(controller) {
         }
         else if (keyword == 'momo'){
           var tablemomo = new Object();
-          tablemomo.pMarine = `宝鐘マリン`;
-          tablemomo.pSubaru = `大空スバル`;
-          tablemomo.pKiara = `Takanashi Kiara`;
-          var result = get_random_item(tablemomo);
+          tablemomo.pmomoMarine = `宝鐘マリン`;
+          tablemomo.pmomoSubaru = `大空スバル`;
+          tablemomo.pmomoKiara = `Takanashi Kiara`;
+          tablemomo.pmomo躺 = 'https://i.imgur.com/a/nPmr4RS.jpg';
+
+          var result = query_image_table(tablemomo,'momo',keyword);
           if (result != ''){
-            keyword = result;
-          }
-          else
-          {
-            keyword = 'sakura momo'
+            await bot.reply(message, result);
+            working = 0;
+            return;
           }
         }
         else if (keyword == '摸摸愛'){
